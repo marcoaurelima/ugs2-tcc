@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="UGS2" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="bin/Release/UGS2_classes" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="include/UGSGameMajor.h" />
+		<Unit filename="include/UGSLeftButtonsMenuMain.h" />
+		<Unit filename="include/UGSMat.h" />
+		<Unit filename="include/UGSMenuMain.h" />
+		<Unit filename="include/UGSMenuMainCards.h" />
+		<Unit filename="include/UGSMenuMainDetails.h" />
+		<Unit filename="include/UGSMenuMainNovoJogo.h" />
+		<Unit filename="include/UGSMenuMainNovoJogoStep2.h" />
+		<Unit filename="include/UGSMusicPlayer.h" />
+		<Unit filename="include/UGSNotasConsecutivas.h" />
+		<Unit filename="include/UGSRock.h" />
+		<Unit filename="include/UGSScoreMajor.h" />
+		<Unit filename="include/UGSScoreMinor.h" />
+		<Unit filename="include/UGSScreenGame.h" />
+		<Unit filename="include/UGSTile.h" />
+		<Unit filename="include/UGSfunctions.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/UGSGameMajor.cpp" />
+		<Unit filename="src/UGSLeftButtonsMenuMain.cpp" />
+		<Unit filename="src/UGSMat.cpp" />
+		<Unit filename="src/UGSMenuMain.cpp" />
+		<Unit filename="src/UGSMenuMainCards.cpp" />
+		<Unit filename="src/UGSMenuMainDetails.cpp" />
+		<Unit filename="src/UGSMenuMainNovoJogo.cpp" />
+		<Unit filename="src/UGSMenuMainNovoJogoStep2.cpp" />
+		<Unit filename="src/UGSMusicPlayer.cpp" />
+		<Unit filename="src/UGSNotasConsecutivas.cpp" />
+		<Unit filename="src/UGSRock.cpp" />
+		<Unit filename="src/UGSScoreMajor.cpp" />
+		<Unit filename="src/UGSScoreMinor.cpp" />
+		<Unit filename="src/UGSScreenGame.cpp" />
+		<Unit filename="src/UGSTile.cpp" />
+		<Unit filename="src/UGSfunctions.cpp" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

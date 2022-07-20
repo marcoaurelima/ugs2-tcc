@@ -1,0 +1,918 @@
+# depslib dependency file v1.0
+1648440418 source:/home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/main.cpp
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	"UGSNotasConsecutivas.h"
+	"UGSRock.h"
+	"UGSMusicPlayer.h"
+	"UGSScoreMinor.h"
+	"UGSScoreMajor.h"
+	"UGSGameMajor.h"
+	"UGSMat.h"
+	"UGSfunctions.h"
+	"UGSScreenGame.h"
+	"UGSMenuMain.h"
+	"UGSMenuMainNovoJogo.h"
+	"UGSMenuMainNovoJogoStep2.h"
+
+1591040886 /home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/include/UGSNotasConsecutivas.h
+	<SFML/Graphics.hpp>
+	<sstream>
+	<vector>
+	"UGSfunctions.h"
+
+1648441078 /home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/include/UGSfunctions.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+
+1591186188 /home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/include/UGSRock.h
+	<SFML/Graphics.hpp>
+	<sstream>
+	<vector>
+	"UGSfunctions.h"
+
+1591040850 /home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/include/UGSMusicPlayer.h
+	"UGSfunctions.h"
+
+1589377738 /home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/include/UGSScoreMinor.h
+	<SFML/Graphics.hpp>
+	<vector>
+	<sstream>
+	"UGSfunctions.h"
+
+1589379248 /home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/include/UGSScoreMajor.h
+	<SFML/Graphics.hpp>
+	<vector>
+	<sstream>
+	"UGSfunctions.h"
+
+1591554708 /home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/include/UGSGameMajor.h
+	<SFML/Graphics.hpp>
+	<SFML/System.hpp>
+	<vector>
+	<sstream>
+	<math.h>
+	"UGSfunctions.h"
+	"UGSMat.h"
+	"UGSTile.h"
+
+1591040394 /home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/include/UGSMat.h
+	<SFML/Graphics.hpp>
+	"UGSfunctions.h"
+
+1591041102 /home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/include/UGSTile.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	"UGSfunctions.h"
+
+1591553550 /home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/include/UGSScreenGame.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	<sstream>
+	<iostream>
+	"UGSNotasConsecutivas.h"
+	"UGSRock.h"
+	"UGSMusicPlayer.h"
+	"UGSScoreMinor.h"
+	"UGSScoreMajor.h"
+	"UGSGameMajor.h"
+	"UGSMat.h"
+	"UGSfunctions.h"
+
+1591040436 /home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/include/UGSMenuMain.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	<vector>
+	"UGSfunctions.h"
+	"UGSLeftButtonsMenuMain.h"
+	"UGSMenuMainNovoJogo.h"
+
+1590779580 /home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/include/UGSLeftButtonsMenuMain.h
+	<SFML/Graphics.hpp>
+	"UGSfunctions.h"
+
+1591383890 /home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/include/UGSMenuMainNovoJogo.h
+	<SFML/Graphics.hpp>
+	<vector>
+	<sstream>
+	<cstring>
+	"UGSfunctions.h"
+	"UGSMenuMainDetails.h"
+	"UGSMenuMainCards.h"
+	"UGSMenuMainNovoJogoStep2.h"
+
+1591040566 /home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/include/UGSMenuMainDetails.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	<vector>
+	<sstream>
+	<iostream>
+	"UGSfunctions.h"
+
+1591383482 /home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/include/UGSMenuMainCards.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	<sstream>
+	<fstream>
+	<stdlib.h>
+	<cmath>
+	"UGSfunctions.h"
+
+1591554552 /home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/include/UGSMenuMainNovoJogoStep2.h
+	<SFML/Graphics.hpp>
+	<vector>
+	<sstream>
+	<iostream>
+	<cstdlib>
+	<cmath>
+	"UGSScreenGame.h"
+	"UGSfunctions.h"
+
+1648441376 source:/home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/src/UGSfunctions.cpp
+	"UGSfunctions.h"
+	<iostream>
+	<SFML/Graphics.hpp>
+
+1648441656 source:/home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/src/UGSGameMajor.cpp
+	"UGSGameMajor.h"
+
+1591038330 source:/home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/src/UGSLeftButtonsMenuMain.cpp
+	"UGSLeftButtonsMenuMain.h"
+
+1590576596 source:/home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/src/UGSMat.cpp
+	"UGSMat.h"
+
+1648440379 source:/home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/src/UGSMenuMain.cpp
+	"UGSMenuMain.h"
+
+1648440379 source:/home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/src/UGSMenuMainCards.cpp
+	"UGSMenuMainCards.h"
+
+1648440379 source:/home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/src/UGSMenuMainDetails.cpp
+	"UGSMenuMainDetails.h"
+
+1648440379 source:/home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/src/UGSMenuMainNovoJogo.cpp
+	"UGSMenuMainNovoJogo.h"
+
+1648440379 source:/home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/src/UGSMenuMainNovoJogoStep2.cpp
+	"UGSMenuMainNovoJogoStep2.h"
+
+1591038992 source:/home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/src/UGSMusicPlayer.cpp
+	"UGSMusicPlayer.h"
+
+1591445538 source:/home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/src/UGSNotasConsecutivas.cpp
+	"UGSNotasConsecutivas.h"
+	"functions.h"
+
+1590926984 /home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/include/functions.h
+	<iostream>
+	<SFML/Graphics.hpp>
+
+1591407626 source:/home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/src/UGSRock.cpp
+	"UGSRock.h"
+
+1591039424 source:/home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/src/UGSScoreMajor.cpp
+	"UGSScoreMajor.h"
+
+1591039424 source:/home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/src/UGSScoreMinor.cpp
+	"UGSScoreMinor.h"
+
+1648440379 source:/home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/src/UGSScreenGame.cpp
+	"UGSScreenGame.h"
+
+1591039862 source:/home/marco/Downloads/UGS2_classes - 14-06-2020 - STANDBY/UGS2_classes/src/UGSTile.cpp
+	"UGSTile.h"
+
+1648593031 source:/home/marco/Documentos/TCC/UGS2/main.cpp
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	"UGSNotasConsecutivas.h"
+	"UGSRock.h"
+	"UGSMusicPlayer.h"
+	"UGSScoreMinor.h"
+	"UGSScoreMajor.h"
+	"UGSGameMajor.h"
+	"UGSMat.h"
+	"UGSfunctions.h"
+	"UGSScreenGame.h"
+	"UGSMenuMain.h"
+	"UGSMenuMainNovoJogo.h"
+	"UGSMenuMainNovoJogoStep2.h"
+
+1591040886 /home/marco/Documentos/TCC/UGS2/include/UGSNotasConsecutivas.h
+	<SFML/Graphics.hpp>
+	<sstream>
+	<vector>
+	"UGSfunctions.h"
+
+1648441078 /home/marco/Documentos/TCC/UGS2/include/UGSfunctions.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+
+1591186188 /home/marco/Documentos/TCC/UGS2/include/UGSRock.h
+	<SFML/Graphics.hpp>
+	<sstream>
+	<vector>
+	"UGSfunctions.h"
+
+1591040850 /home/marco/Documentos/TCC/UGS2/include/UGSMusicPlayer.h
+	"UGSfunctions.h"
+
+1589377738 /home/marco/Documentos/TCC/UGS2/include/UGSScoreMinor.h
+	<SFML/Graphics.hpp>
+	<vector>
+	<sstream>
+	"UGSfunctions.h"
+
+1589379248 /home/marco/Documentos/TCC/UGS2/include/UGSScoreMajor.h
+	<SFML/Graphics.hpp>
+	<vector>
+	<sstream>
+	"UGSfunctions.h"
+
+1591554708 /home/marco/Documentos/TCC/UGS2/include/UGSGameMajor.h
+	<SFML/Graphics.hpp>
+	<SFML/System.hpp>
+	<vector>
+	<sstream>
+	<math.h>
+	"UGSfunctions.h"
+	"UGSMat.h"
+	"UGSTile.h"
+
+1591040394 /home/marco/Documentos/TCC/UGS2/include/UGSMat.h
+	<SFML/Graphics.hpp>
+	"UGSfunctions.h"
+
+1591041102 /home/marco/Documentos/TCC/UGS2/include/UGSTile.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	"UGSfunctions.h"
+
+1591553550 /home/marco/Documentos/TCC/UGS2/include/UGSScreenGame.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	<sstream>
+	<iostream>
+	"UGSNotasConsecutivas.h"
+	"UGSRock.h"
+	"UGSMusicPlayer.h"
+	"UGSScoreMinor.h"
+	"UGSScoreMajor.h"
+	"UGSGameMajor.h"
+	"UGSMat.h"
+	"UGSfunctions.h"
+
+1591040436 /home/marco/Documentos/TCC/UGS2/include/UGSMenuMain.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	<vector>
+	"UGSfunctions.h"
+	"UGSLeftButtonsMenuMain.h"
+	"UGSMenuMainNovoJogo.h"
+
+1590779580 /home/marco/Documentos/TCC/UGS2/include/UGSLeftButtonsMenuMain.h
+	<SFML/Graphics.hpp>
+	"UGSfunctions.h"
+
+1591383890 /home/marco/Documentos/TCC/UGS2/include/UGSMenuMainNovoJogo.h
+	<SFML/Graphics.hpp>
+	<vector>
+	<sstream>
+	<cstring>
+	"UGSfunctions.h"
+	"UGSMenuMainDetails.h"
+	"UGSMenuMainCards.h"
+	"UGSMenuMainNovoJogoStep2.h"
+
+1591040566 /home/marco/Documentos/TCC/UGS2/include/UGSMenuMainDetails.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	<vector>
+	<sstream>
+	<iostream>
+	"UGSfunctions.h"
+
+1591383482 /home/marco/Documentos/TCC/UGS2/include/UGSMenuMainCards.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	<sstream>
+	<fstream>
+	<stdlib.h>
+	<cmath>
+	"UGSfunctions.h"
+
+1591554552 /home/marco/Documentos/TCC/UGS2/include/UGSMenuMainNovoJogoStep2.h
+	<SFML/Graphics.hpp>
+	<vector>
+	<sstream>
+	<iostream>
+	<cstdlib>
+	<cmath>
+	"UGSScreenGame.h"
+	"UGSfunctions.h"
+
+1648441376 source:/home/marco/Documentos/TCC/UGS2/src/UGSfunctions.cpp
+	"UGSfunctions.h"
+	<iostream>
+	<SFML/Graphics.hpp>
+
+1648441656 source:/home/marco/Documentos/TCC/UGS2/src/UGSGameMajor.cpp
+	"UGSGameMajor.h"
+
+1591038330 source:/home/marco/Documentos/TCC/UGS2/src/UGSLeftButtonsMenuMain.cpp
+	"UGSLeftButtonsMenuMain.h"
+
+1590576596 source:/home/marco/Documentos/TCC/UGS2/src/UGSMat.cpp
+	"UGSMat.h"
+
+1648440379 source:/home/marco/Documentos/TCC/UGS2/src/UGSMenuMain.cpp
+	"UGSMenuMain.h"
+
+1648440379 source:/home/marco/Documentos/TCC/UGS2/src/UGSMenuMainCards.cpp
+	"UGSMenuMainCards.h"
+
+1648440379 source:/home/marco/Documentos/TCC/UGS2/src/UGSMenuMainDetails.cpp
+	"UGSMenuMainDetails.h"
+
+1648440379 source:/home/marco/Documentos/TCC/UGS2/src/UGSMenuMainNovoJogo.cpp
+	"UGSMenuMainNovoJogo.h"
+
+1648440379 source:/home/marco/Documentos/TCC/UGS2/src/UGSMenuMainNovoJogoStep2.cpp
+	"UGSMenuMainNovoJogoStep2.h"
+
+1591038992 source:/home/marco/Documentos/TCC/UGS2/src/UGSMusicPlayer.cpp
+	"UGSMusicPlayer.h"
+
+1591445538 source:/home/marco/Documentos/TCC/UGS2/src/UGSNotasConsecutivas.cpp
+	"UGSNotasConsecutivas.h"
+	"functions.h"
+
+1590926984 /home/marco/Documentos/TCC/UGS2/include/functions.h
+	<iostream>
+	<SFML/Graphics.hpp>
+
+1591407626 source:/home/marco/Documentos/TCC/UGS2/src/UGSRock.cpp
+	"UGSRock.h"
+
+1591039424 source:/home/marco/Documentos/TCC/UGS2/src/UGSScoreMajor.cpp
+	"UGSScoreMajor.h"
+
+1591039424 source:/home/marco/Documentos/TCC/UGS2/src/UGSScoreMinor.cpp
+	"UGSScoreMinor.h"
+
+1648440379 source:/home/marco/Documentos/TCC/UGS2/src/UGSScreenGame.cpp
+	"UGSScreenGame.h"
+
+1591039862 source:/home/marco/Documentos/TCC/UGS2/src/UGSTile.cpp
+	"UGSTile.h"
+
+1649696876 source:/home/marco/Documentos/tcc/ugs2/main.cpp
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	"UGSNotasConsecutivas.h"
+	"UGSRock.h"
+	"UGSMusicPlayer.h"
+	"UGSScoreMinor.h"
+	"UGSScoreMajor.h"
+	"UGSGameMajor.h"
+	"UGSMat.h"
+	"UGSfunctions.h"
+	"UGSScreenGame.h"
+	"UGSMenuMain.h"
+	"UGSMenuMainNovoJogo.h"
+	"UGSMenuMainNovoJogoStep2.h"
+
+1649681554 /home/marco/Documentos/tcc/ugs2/include/UGSNotasConsecutivas.h
+	<SFML/Graphics.hpp>
+	<sstream>
+	<vector>
+	"UGSfunctions.h"
+
+1649681554 /home/marco/Documentos/tcc/ugs2/include/UGSfunctions.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+
+1649681554 /home/marco/Documentos/tcc/ugs2/include/UGSRock.h
+	<SFML/Graphics.hpp>
+	<sstream>
+	<vector>
+	"UGSfunctions.h"
+
+1649681554 /home/marco/Documentos/tcc/ugs2/include/UGSMusicPlayer.h
+	"UGSfunctions.h"
+
+1649681554 /home/marco/Documentos/tcc/ugs2/include/UGSScoreMinor.h
+	<SFML/Graphics.hpp>
+	<vector>
+	<sstream>
+	"UGSfunctions.h"
+
+1649681554 /home/marco/Documentos/tcc/ugs2/include/UGSScoreMajor.h
+	<SFML/Graphics.hpp>
+	<vector>
+	<sstream>
+	"UGSfunctions.h"
+
+1649681554 /home/marco/Documentos/tcc/ugs2/include/UGSGameMajor.h
+	<SFML/Graphics.hpp>
+	<SFML/System.hpp>
+	<vector>
+	<sstream>
+	<math.h>
+	"UGSfunctions.h"
+	"UGSMat.h"
+	"UGSTile.h"
+
+1649681554 /home/marco/Documentos/tcc/ugs2/include/UGSMat.h
+	<SFML/Graphics.hpp>
+	"UGSfunctions.h"
+
+1649681554 /home/marco/Documentos/tcc/ugs2/include/UGSTile.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	"UGSfunctions.h"
+
+1649681554 /home/marco/Documentos/tcc/ugs2/include/UGSScreenGame.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	<sstream>
+	<iostream>
+	"UGSNotasConsecutivas.h"
+	"UGSRock.h"
+	"UGSMusicPlayer.h"
+	"UGSScoreMinor.h"
+	"UGSScoreMajor.h"
+	"UGSGameMajor.h"
+	"UGSMat.h"
+	"UGSfunctions.h"
+
+1649681554 /home/marco/Documentos/tcc/ugs2/include/UGSMenuMain.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	<vector>
+	"UGSfunctions.h"
+	"UGSLeftButtonsMenuMain.h"
+	"UGSMenuMainNovoJogo.h"
+
+1649681554 /home/marco/Documentos/tcc/ugs2/include/UGSLeftButtonsMenuMain.h
+	<SFML/Graphics.hpp>
+	"UGSfunctions.h"
+
+1649681554 /home/marco/Documentos/tcc/ugs2/include/UGSMenuMainNovoJogo.h
+	<SFML/Graphics.hpp>
+	<vector>
+	<sstream>
+	<cstring>
+	"UGSfunctions.h"
+	"UGSMenuMainDetails.h"
+	"UGSMenuMainCards.h"
+	"UGSMenuMainNovoJogoStep2.h"
+
+1649681554 /home/marco/Documentos/tcc/ugs2/include/UGSMenuMainDetails.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	<vector>
+	<sstream>
+	<iostream>
+	"UGSfunctions.h"
+
+1649681554 /home/marco/Documentos/tcc/ugs2/include/UGSMenuMainCards.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	<sstream>
+	<fstream>
+	<stdlib.h>
+	<cmath>
+	"UGSfunctions.h"
+
+1649681554 /home/marco/Documentos/tcc/ugs2/include/UGSMenuMainNovoJogoStep2.h
+	<SFML/Graphics.hpp>
+	<vector>
+	<sstream>
+	<iostream>
+	<cstdlib>
+	<cmath>
+	"UGSScreenGame.h"
+	"UGSfunctions.h"
+
+1649681554 source:/home/marco/Documentos/tcc/ugs2/src/UGSfunctions.cpp
+	"UGSfunctions.h"
+	<iostream>
+	<SFML/Graphics.hpp>
+
+1649681554 source:/home/marco/Documentos/tcc/ugs2/src/UGSGameMajor.cpp
+	"UGSGameMajor.h"
+
+1649681554 source:/home/marco/Documentos/tcc/ugs2/src/UGSLeftButtonsMenuMain.cpp
+	"UGSLeftButtonsMenuMain.h"
+
+1649681554 source:/home/marco/Documentos/tcc/ugs2/src/UGSMat.cpp
+	"UGSMat.h"
+
+1649681554 source:/home/marco/Documentos/tcc/ugs2/src/UGSMenuMain.cpp
+	"UGSMenuMain.h"
+
+1649697566 source:/home/marco/Documentos/tcc/ugs2/src/UGSMenuMainCards.cpp
+	"UGSMenuMainCards.h"
+
+1649681554 source:/home/marco/Documentos/tcc/ugs2/src/UGSMenuMainDetails.cpp
+	"UGSMenuMainDetails.h"
+
+1649681554 source:/home/marco/Documentos/tcc/ugs2/src/UGSMenuMainNovoJogo.cpp
+	"UGSMenuMainNovoJogo.h"
+
+1649681554 source:/home/marco/Documentos/tcc/ugs2/src/UGSMenuMainNovoJogoStep2.cpp
+	"UGSMenuMainNovoJogoStep2.h"
+
+1649681554 source:/home/marco/Documentos/tcc/ugs2/src/UGSMusicPlayer.cpp
+	"UGSMusicPlayer.h"
+
+1649681554 source:/home/marco/Documentos/tcc/ugs2/src/UGSNotasConsecutivas.cpp
+	"UGSNotasConsecutivas.h"
+	"functions.h"
+
+1649681554 /home/marco/Documentos/tcc/ugs2/include/functions.h
+	<iostream>
+	<SFML/Graphics.hpp>
+
+1649681554 source:/home/marco/Documentos/tcc/ugs2/src/UGSRock.cpp
+	"UGSRock.h"
+
+1649681554 source:/home/marco/Documentos/tcc/ugs2/src/UGSScoreMajor.cpp
+	"UGSScoreMajor.h"
+
+1649681554 source:/home/marco/Documentos/tcc/ugs2/src/UGSScoreMinor.cpp
+	"UGSScoreMinor.h"
+
+1649681554 source:/home/marco/Documentos/tcc/ugs2/src/UGSScreenGame.cpp
+	"UGSScreenGame.h"
+
+1649681554 source:/home/marco/Documentos/tcc/ugs2/src/UGSTile.cpp
+	"UGSTile.h"
+
+1651430145 source:c:\users\marco\documents\tcc\ugs2\main.cpp
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	"UGSNotasConsecutivas.h"
+	"UGSRock.h"
+	"UGSMusicPlayer.h"
+	"UGSScoreMinor.h"
+	"UGSScoreMajor.h"
+	"UGSGameMajor.h"
+	"UGSMat.h"
+	"UGSfunctions.h"
+	"UGSScreenGame.h"
+	"UGSMenuMain.h"
+	"UGSMenuMainNovoJogo.h"
+	"UGSMenuMainNovoJogoStep2.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2\include\ugsnotasconsecutivas.h
+	<SFML/Graphics.hpp>
+	<sstream>
+	<vector>
+	"UGSfunctions.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2\include\ugsfunctions.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+
+1651430145 c:\users\marco\documents\tcc\ugs2\include\ugsrock.h
+	<SFML/Graphics.hpp>
+	<sstream>
+	<vector>
+	"UGSfunctions.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2\include\ugsmusicplayer.h
+	"UGSfunctions.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2\include\ugsscoreminor.h
+	<SFML/Graphics.hpp>
+	<vector>
+	<sstream>
+	"UGSfunctions.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2\include\ugsscoremajor.h
+	<SFML/Graphics.hpp>
+	<vector>
+	<sstream>
+	"UGSfunctions.h"
+
+1651433516 c:\users\marco\documents\tcc\ugs2\include\ugsgamemajor.h
+	<SFML/Graphics.hpp>
+	<SFML/System.hpp>
+	<vector>
+	<sstream>
+	<math.h>
+	"UGSfunctions.h"
+	"UGSMat.h"
+	"UGSTile.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2\include\ugsmat.h
+	<SFML/Graphics.hpp>
+	"UGSfunctions.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2\include\ugstile.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	"UGSfunctions.h"
+
+1651684785 c:\users\marco\documents\tcc\ugs2\include\ugsscreengame.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	<sstream>
+	<iostream>
+	"UGSNotasConsecutivas.h"
+	"UGSRock.h"
+	"UGSMusicPlayer.h"
+	"UGSScoreMinor.h"
+	"UGSScoreMajor.h"
+	"UGSGameMajor.h"
+	"UGSMat.h"
+	"UGSfunctions.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2\include\ugsmenumain.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	<vector>
+	"UGSfunctions.h"
+	"UGSLeftButtonsMenuMain.h"
+	"UGSMenuMainNovoJogo.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2\include\ugsleftbuttonsmenumain.h
+	<SFML/Graphics.hpp>
+	"UGSfunctions.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2\include\ugsmenumainnovojogo.h
+	<SFML/Graphics.hpp>
+	<vector>
+	<sstream>
+	<cstring>
+	"UGSfunctions.h"
+	"UGSMenuMainDetails.h"
+	"UGSMenuMainCards.h"
+	"UGSMenuMainNovoJogoStep2.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2\include\ugsmenumaindetails.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	<vector>
+	<sstream>
+	<iostream>
+	"UGSfunctions.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2\include\ugsmenumaincards.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	<sstream>
+	<fstream>
+	<stdlib.h>
+	<cmath>
+	"UGSfunctions.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2\include\ugsmenumainnovojogostep2.h
+	<SFML/Graphics.hpp>
+	<vector>
+	<sstream>
+	<iostream>
+	<cstdlib>
+	<cmath>
+	"UGSScreenGame.h"
+	"UGSfunctions.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2\src\ugsfunctions.cpp
+	"UGSfunctions.h"
+	<iostream>
+	<SFML/Graphics.hpp>
+
+1652150965 source:c:\users\marco\documents\tcc\ugs2\src\ugsgamemajor.cpp
+	"UGSGameMajor.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2\src\ugsleftbuttonsmenumain.cpp
+	"UGSLeftButtonsMenuMain.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2\src\ugsmat.cpp
+	"UGSMat.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2\src\ugsmenumain.cpp
+	"UGSMenuMain.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2\src\ugsmenumaincards.cpp
+	"UGSMenuMainCards.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2\src\ugsmenumaindetails.cpp
+	"UGSMenuMainDetails.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2\src\ugsmenumainnovojogo.cpp
+	"UGSMenuMainNovoJogo.h"
+
+1652150960 source:c:\users\marco\documents\tcc\ugs2\src\ugsmenumainnovojogostep2.cpp
+	"UGSMenuMainNovoJogoStep2.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2\src\ugsmusicplayer.cpp
+	"UGSMusicPlayer.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2\src\ugsnotasconsecutivas.cpp
+	"UGSNotasConsecutivas.h"
+	"functions.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2\include\functions.h
+	<iostream>
+	<SFML/Graphics.hpp>
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2\src\ugsrock.cpp
+	"UGSRock.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2\src\ugsscoremajor.cpp
+	"UGSScoreMajor.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2\src\ugsscoreminor.cpp
+	"UGSScoreMinor.h"
+
+1651687312 source:c:\users\marco\documents\tcc\ugs2\src\ugsscreengame.cpp
+	"UGSScreenGame.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2\src\ugstile.cpp
+	"UGSTile.h"
+
+1658337536 source:c:\users\marco\documents\tcc\ugs2-tcc\main.cpp
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	"UGSNotasConsecutivas.h"
+	"UGSRock.h"
+	"UGSMusicPlayer.h"
+	"UGSScoreMinor.h"
+	"UGSScoreMajor.h"
+	"UGSGameMajor.h"
+	"UGSMat.h"
+	"UGSfunctions.h"
+	"UGSScreenGame.h"
+	"UGSMenuMain.h"
+	"UGSMenuMainNovoJogo.h"
+	"UGSMenuMainNovoJogoStep2.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2-tcc\include\ugsnotasconsecutivas.h
+	<SFML/Graphics.hpp>
+	<sstream>
+	<vector>
+	"UGSfunctions.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2-tcc\include\ugsfunctions.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+
+1651430145 c:\users\marco\documents\tcc\ugs2-tcc\include\ugsrock.h
+	<SFML/Graphics.hpp>
+	<sstream>
+	<vector>
+	"UGSfunctions.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2-tcc\include\ugsmusicplayer.h
+	"UGSfunctions.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2-tcc\include\ugsscoreminor.h
+	<SFML/Graphics.hpp>
+	<vector>
+	<sstream>
+	"UGSfunctions.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2-tcc\include\ugsscoremajor.h
+	<SFML/Graphics.hpp>
+	<vector>
+	<sstream>
+	"UGSfunctions.h"
+
+1651433516 c:\users\marco\documents\tcc\ugs2-tcc\include\ugsgamemajor.h
+	<SFML/Graphics.hpp>
+	<SFML/System.hpp>
+	<vector>
+	<sstream>
+	<math.h>
+	"UGSfunctions.h"
+	"UGSMat.h"
+	"UGSTile.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2-tcc\include\ugsmat.h
+	<SFML/Graphics.hpp>
+	"UGSfunctions.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2-tcc\include\ugstile.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	"UGSfunctions.h"
+
+1651684785 c:\users\marco\documents\tcc\ugs2-tcc\include\ugsscreengame.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	<sstream>
+	<iostream>
+	"UGSNotasConsecutivas.h"
+	"UGSRock.h"
+	"UGSMusicPlayer.h"
+	"UGSScoreMinor.h"
+	"UGSScoreMajor.h"
+	"UGSGameMajor.h"
+	"UGSMat.h"
+	"UGSfunctions.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2-tcc\include\ugsmenumain.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	<vector>
+	"UGSfunctions.h"
+	"UGSLeftButtonsMenuMain.h"
+	"UGSMenuMainNovoJogo.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2-tcc\include\ugsleftbuttonsmenumain.h
+	<SFML/Graphics.hpp>
+	"UGSfunctions.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2-tcc\include\ugsmenumainnovojogo.h
+	<SFML/Graphics.hpp>
+	<vector>
+	<sstream>
+	<cstring>
+	"UGSfunctions.h"
+	"UGSMenuMainDetails.h"
+	"UGSMenuMainCards.h"
+	"UGSMenuMainNovoJogoStep2.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2-tcc\include\ugsmenumaindetails.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+	<vector>
+	<sstream>
+	<iostream>
+	"UGSfunctions.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2-tcc\include\ugsmenumaincards.h
+	<SFML/Graphics.hpp>
+	<iostream>
+	<sstream>
+	<fstream>
+	<stdlib.h>
+	<cmath>
+	"UGSfunctions.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2-tcc\include\ugsmenumainnovojogostep2.h
+	<SFML/Graphics.hpp>
+	<vector>
+	<sstream>
+	<iostream>
+	<cstdlib>
+	<cmath>
+	"UGSScreenGame.h"
+	"UGSfunctions.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2-tcc\src\ugsfunctions.cpp
+	"UGSfunctions.h"
+	<iostream>
+	<SFML/Graphics.hpp>
+
+1652150965 source:c:\users\marco\documents\tcc\ugs2-tcc\src\ugsgamemajor.cpp
+	"UGSGameMajor.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2-tcc\src\ugsleftbuttonsmenumain.cpp
+	"UGSLeftButtonsMenuMain.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2-tcc\src\ugsmat.cpp
+	"UGSMat.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2-tcc\src\ugsmenumain.cpp
+	"UGSMenuMain.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2-tcc\src\ugsmenumaincards.cpp
+	"UGSMenuMainCards.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2-tcc\src\ugsmenumaindetails.cpp
+	"UGSMenuMainDetails.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2-tcc\src\ugsmenumainnovojogo.cpp
+	"UGSMenuMainNovoJogo.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2-tcc\src\ugsmusicplayer.cpp
+	"UGSMusicPlayer.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2-tcc\src\ugsnotasconsecutivas.cpp
+	"UGSNotasConsecutivas.h"
+	"functions.h"
+
+1651430145 c:\users\marco\documents\tcc\ugs2-tcc\include\functions.h
+	<iostream>
+	<SFML/Graphics.hpp>
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2-tcc\src\ugsrock.cpp
+	"UGSRock.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2-tcc\src\ugsscoremajor.cpp
+	"UGSScoreMajor.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2-tcc\src\ugsscoreminor.cpp
+	"UGSScoreMinor.h"
+
+1651687312 source:c:\users\marco\documents\tcc\ugs2-tcc\src\ugsscreengame.cpp
+	"UGSScreenGame.h"
+
+1651430147 source:c:\users\marco\documents\tcc\ugs2-tcc\src\ugstile.cpp
+	"UGSTile.h"
+
