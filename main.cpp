@@ -82,7 +82,39 @@ int main()
 
     UGSMenuMain menuMain;
 
+    Game1playerInfo info;
+    info.backgrounCodes = std::vector<int>{2,3};
+    info.bandName = "G-Off";
+    info.dificultyCode = 1;
+    info.folderCode = 3;
+    info.instrumentCode = 1;
+    info.misicName = "Quando eu acordar";
+    info.playerName = "Marco";
+    info.speed = 8;
+    UGSScreenGame gameTst(&info);
 
+     sf::Event event;
+    while (window.isOpen()){
+        while (window.pollEvent(event)){
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+        window.clear();
+        gameTst.draw(window);
+
+        if(functions.mouseColision(spriteClose, window)){
+            spriteClose.setColor(sf::Color(255,255,255,255));
+            if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+                window.close();
+            }
+        } else {
+            spriteClose.setColor(sf::Color(255,255,255,120));
+        }
+        window.draw(spriteClose);
+        window.display();
+    }
+
+    /*
     sf::Event event;
     while (window.isOpen()){
         while (window.pollEvent(event)){
@@ -102,7 +134,7 @@ int main()
         }
         window.draw(spriteClose);
         window.display();
-    }
+    }*/
 
     return 0;
 }

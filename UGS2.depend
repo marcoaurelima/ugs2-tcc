@@ -735,7 +735,7 @@
 1651430147 source:c:\users\marco\documents\tcc\ugs2\src\ugstile.cpp
 	"UGSTile.h"
 
-1658337536 source:c:\users\marco\documents\tcc\ugs2-tcc\main.cpp
+1658411594 source:c:\users\marco\documents\tcc\ugs2-tcc\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	"UGSNotasConsecutivas.h"
@@ -915,4 +915,7 @@
 
 1651430147 source:c:\users\marco\documents\tcc\ugs2-tcc\src\ugstile.cpp
 	"UGSTile.h"
+
+1658337894 source:c:\users\marco\documents\tcc\ugs2-tcc\src\ugsmenumainnovojogostep2.cpp
+	"UGSMenuMainNovoJogoStep2.h"
 
