@@ -26,7 +26,7 @@ OBJS =  main.o \
 
 all: $(OBJS) 
 	$(CXX) -o $(BIN)/ugs2 -I $(INCLUDE) $(OBJS) $(SFML)
-	$(BIN)/ugs2
+	@$(BIN)/ugs2
 
 main.o: main.cpp
 	$(CXX) -c main.cpp -I $(INCLUDE) -o main.o $(SFML)
