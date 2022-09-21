@@ -1,12 +1,14 @@
 INCLUDE = ./include
 SRC = ./src
-BIN = ./bin
 OBJ = ./obj
  
-CXX = g++ -std=c++11
-SFML = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+CXX = g++ -Wall -fexceptions -O2 -DSFML_STATIC
+LIB =  ./lib
 
-OBJS =  main.o \
+SFML = -lsfml-graphics-s -lsfml-window-s -lsfml-audio-s -lsfml-network-s -lsfml-system-s 
+DEPEND = -lgdi32 -lopengl32 -lfreetype -lopenal32 -lflac -lvorbisenc -lvorbisfile -lvorbis -logg -lws2_32 -lwinmm 
+
+OBJS =  $(OBJ)/main.o \
 	    $(OBJ)/UGSfunctions.o \
 	    $(OBJ)/UGSGameMajor.o \
 		$(OBJ)/UGSLeftButtonsMenuMain.o \
@@ -25,65 +27,66 @@ OBJS =  main.o \
 		$(OBJ)/UGSTile.o
 
 all: $(OBJS) 
-	$(CXX) -o $(BIN)/ugs2 -I $(INCLUDE) $(OBJS) $(SFML)
-	@$(BIN)/ugs2
+	g++.exe -L $(LIB) -o ugs2-tcc.exe $(OBJS) -s $(SFML) $(DEPEND)
+	ugs2-tcc.exe
 
-main.o: main.cpp
-	$(CXX) -c main.cpp -I $(INCLUDE) -o main.o $(SFML)
+$(OBJ)/main.o: main.cpp
+	$(CXX) -I $(INCLUDE) -c main.cpp -o $(OBJ)/main.o 
 
 $(OBJ)/UGSfunctions.o: $(SRC)/UGSfunctions.cpp
-	$(CXX) -c $(SRC)/UGSfunctions.cpp -I $(INCLUDE) -o $(OBJ)/UGSfunctions.o $(SFML)
+	$(CXX) -I $(INCLUDE) -c $(SRC)/UGSfunctions.cpp -o $(OBJ)/UGSfunctions.o
 
 $(OBJ)/UGSGameMajor.o: $(SRC)/UGSGameMajor.cpp
-	$(CXX) -c $(SRC)/UGSGameMajor.cpp -I $(INCLUDE) -o $(OBJ)/UGSGameMajor.o $(SFML)
+	$(CXX) -I $(INCLUDE) -c $(SRC)/UGSGameMajor.cpp -o $(OBJ)/UGSGameMajor.o
 
 $(OBJ)/UGSLeftButtonsMenuMain.o: $(SRC)/UGSLeftButtonsMenuMain.cpp
-	$(CXX) -c $(SRC)/UGSLeftButtonsMenuMain.cpp -I $(INCLUDE) -o $(OBJ)/UGSLeftButtonsMenuMain.o $(SFML)
+	$(CXX) -I $(INCLUDE) -c $(SRC)/UGSLeftButtonsMenuMain.cpp -o $(OBJ)/UGSLeftButtonsMenuMain.o
 
 $(OBJ)/UGSMat.o: $(SRC)/UGSMat.cpp
-	$(CXX) -c $(SRC)/UGSMat.cpp -I $(INCLUDE) -o $(OBJ)/UGSMat.o $(SFML)
+	$(CXX) -I $(INCLUDE) -c $(SRC)/UGSMat.cpp -o $(OBJ)/UGSMat.o
 
 $(OBJ)/UGSMenuMain.o: $(SRC)/UGSMenuMain.cpp
-	$(CXX) -c $(SRC)/UGSMenuMain.cpp -I $(INCLUDE) -o $(OBJ)/UGSMenuMain.o $(SFML)
+	$(CXX) -I $(INCLUDE) -c $(SRC)/UGSMenuMain.cpp -o $(OBJ)/UGSMenuMain.o
 
 $(OBJ)/UGSMenuMainCards.o: $(SRC)/UGSMenuMainCards.cpp
-	$(CXX) -c $(SRC)/UGSMenuMainCards.cpp -I $(INCLUDE) -o $(OBJ)/UGSMenuMainCards.o $(SFML)
+	$(CXX) -I $(INCLUDE) -c $(SRC)/UGSMenuMainCards.cpp -o $(OBJ)/UGSMenuMainCards.o
 
 $(OBJ)/UGSMenuMainDetails.o: $(SRC)/UGSMenuMainDetails.cpp
-	$(CXX) -c $(SRC)/UGSMenuMainDetails.cpp -I $(INCLUDE) -o $(OBJ)/UGSMenuMainDetails.o $(SFML)
+	$(CXX) -I $(INCLUDE) -c $(SRC)/UGSMenuMainDetails.cpp -o $(OBJ)/UGSMenuMainDetails.o
 
 $(OBJ)/UGSMenuMainNovoJogo.o: $(SRC)/UGSMenuMainNovoJogo.cpp
-	$(CXX) -c $(SRC)/UGSMenuMainNovoJogo.cpp -I $(INCLUDE) -o $(OBJ)/UGSMenuMainNovoJogo.o $(SFML)
+	$(CXX) -I $(INCLUDE) -c $(SRC)/UGSMenuMainNovoJogo.cpp -o $(OBJ)/UGSMenuMainNovoJogo.o
 
 $(OBJ)/UGSMenuMainNovoJogoStep2.o: $(SRC)/UGSMenuMainNovoJogoStep2.cpp
-	$(CXX) -c $(SRC)/UGSMenuMainNovoJogoStep2.cpp -I $(INCLUDE) -o $(OBJ)/UGSMenuMainNovoJogoStep2.o $(SFML)
+	$(CXX) -I $(INCLUDE) -c $(SRC)/UGSMenuMainNovoJogoStep2.cpp -o $(OBJ)/UGSMenuMainNovoJogoStep2.o
 
 $(OBJ)/UGSMusicPlayer.o: $(SRC)/UGSMusicPlayer.cpp
-	$(CXX) -c $(SRC)/UGSMusicPlayer.cpp -I $(INCLUDE) -o $(OBJ)/UGSMusicPlayer.o $(SFML)
+	$(CXX) -I $(INCLUDE) -c $(SRC)/UGSMusicPlayer.cpp -o $(OBJ)/UGSMusicPlayer.o
 
 $(OBJ)/UGSNotasConsecutivas.o: $(SRC)/UGSNotasConsecutivas.cpp
-	$(CXX) -c $(SRC)/UGSNotasConsecutivas.cpp -I $(INCLUDE) -o $(OBJ)/UGSNotasConsecutivas.o $(SFML)
+	$(CXX) -I $(INCLUDE) -c $(SRC)/UGSNotasConsecutivas.cpp -o $(OBJ)/UGSNotasConsecutivas.o
 
 $(OBJ)/UGSRock.o: $(SRC)/UGSRock.cpp
-	$(CXX) -c $(SRC)/UGSRock.cpp -I $(INCLUDE) -o $(OBJ)/UGSRock.o $(SFML)
+	$(CXX) -I $(INCLUDE) -c $(SRC)/UGSRock.cpp -o $(OBJ)/UGSRock.o
 
 $(OBJ)/UGSScoreMajor.o: $(SRC)/UGSScoreMajor.cpp
-	$(CXX) -c $(SRC)/UGSScoreMajor.cpp -I $(INCLUDE) -o $(OBJ)/UGSScoreMajor.o $(SFML)
+	$(CXX) -I $(INCLUDE) -c $(SRC)/UGSScoreMajor.cpp -o $(OBJ)/UGSScoreMajor.o
 
 $(OBJ)/UGSScoreMinor.o: $(SRC)/UGSScoreMinor.cpp
-	$(CXX) -c $(SRC)/UGSScoreMinor.cpp -I $(INCLUDE) -o $(OBJ)/UGSScoreMinor.o $(SFML)
+	$(CXX) -I $(INCLUDE) -c $(SRC)/UGSScoreMinor.cpp -o $(OBJ)/UGSScoreMinor.o
 
 $(OBJ)/UGSScreenGame.o: $(SRC)/UGSScreenGame.cpp
-	$(CXX) -c $(SRC)/UGSScreenGame.cpp -I $(INCLUDE) -o $(OBJ)/UGSScreenGame.o $(SFML)
+	$(CXX) -I $(INCLUDE) -c $(SRC)/UGSScreenGame.cpp -o $(OBJ)/UGSScreenGame.o
 
 $(OBJ)/UGSTile.o: $(SRC)/UGSTile.cpp
-	$(CXX) -c $(SRC)/UGSTile.cpp -I $(INCLUDE) -o $(OBJ)/UGSTile.o $(SFML)
+	$(CXX) -I $(INCLUDE) -c $(SRC)/UGSTile.cpp -o $(OBJ)/UGSTile.o
 
 clean:
-	rm -rf ./obj/*.o
+	rmdir /s obj 
+	mkdir obj
 
 run:
-	./bin/ugs2
+	ugs2-tcc.exe
 
 
 
