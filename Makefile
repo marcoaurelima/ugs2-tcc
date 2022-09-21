@@ -1,10 +1,9 @@
 INCLUDE = ./include
 SRC = ./src
+LIB = ./lib
 OBJ = ./obj
  
 CXX = g++ -Wall -fexceptions -O2 -DSFML_STATIC
-LIB =  ./lib
-
 SFML = -lsfml-graphics-s -lsfml-window-s -lsfml-audio-s -lsfml-network-s -lsfml-system-s 
 DEPEND = -lgdi32 -lopengl32 -lfreetype -lopenal32 -lflac -lvorbisenc -lvorbisfile -lvorbis -logg -lws2_32 -lwinmm 
 
