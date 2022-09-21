@@ -2,7 +2,7 @@ INCLUDE = ./include
 SRC = ./src
 BIN = ./bin
 OBJ = ./obj
-
+ 
 CXX = g++ -std=c++11
 SFML = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
