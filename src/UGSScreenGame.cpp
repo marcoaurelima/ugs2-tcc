@@ -175,6 +175,13 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
     for(unsigned int i=0; i<ia_logs.size(); i++){
         window.draw(ia_logs[i]);
     }
+
+
+    // TCC - atualização do status
+    std::string pontos = "Pontos\n[" + (std::to_string(mGameMajor->getScore()) + "]\n");
+    std::string notasCons = "N. Cons\n[" + std::to_string(mGameMajor->getConsecutiveNotesNow()) + "]";
+    ia_logs[2].setString(pontos);
+    ia_logs[3].setString(notasCons);
 }
 
 bool UGSScreenGame::getPermissionToShow(){
