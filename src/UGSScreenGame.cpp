@@ -70,22 +70,31 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
 
     mMusicPlayer = new UGSMusicPlayer(570, 118);
 
-    std::string logs = "Distancias\n[verd|123]\n[verm|123]\n[amar|123]\n[azul|123]\n[lara|123]\n";
+    std::string logs = "------------------  status -----------------\n";
+    ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 17, sf::Color(255,255,255), logs));
+    ia_logs[0].setPosition(sf::Vector2f(740,195));
+
+    logs = "Distancias\n[verd|123]\n[verm|123]\n[amar|123]\n[azul|123]\n[lara|123]\n";
     ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 24, sf::Color(255,255,255), logs));
-    ia_logs[0].setPosition(sf::Vector2f(700,150));
+    ia_logs[1].setPosition(sf::Vector2f(740,220));
    
     logs = "Pontos\n[1234]";
     ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 24, sf::Color(255,255,255), logs));
-    ia_logs[1].setPosition(sf::Vector2f(870,150));
+    ia_logs[2].setPosition(sf::Vector2f(910,220));
 
     logs = "N.Cons\n[1/10]";
     ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 24, sf::Color(255,255,255), logs));
-    ia_logs[2].setPosition(sf::Vector2f(870,260));
+    ia_logs[3].setPosition(sf::Vector2f(910,330));
 
     logs = "R. Neural\n[decisao]\n[verd|xx]\n[verm|  ]\n[amar|xx]\n[azul|  ]\n[lara|  ]";
-    ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 20, sf::Color(255,255,0), logs));
-    ia_logs[3].setPosition(sf::Vector2f(990,155));
+    ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 20, sf::Color(255,255,255), logs));
+    ia_logs[4].setPosition(sf::Vector2f(1030,225));
 
+    logs = "-------------------------------------------\n" 
+    "Alg. Gen   [geracao|8]   [cromossomo(8/10)]\n"
+     "-------------------------------------------\n" ;
+    ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 17, sf::Color(255,255,255), logs));
+    ia_logs[5].setPosition(sf::Vector2f(740,390));
 
 }
 
