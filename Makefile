@@ -3,8 +3,8 @@ SRC = ./src
 LIB = ./lib
 OBJ = ./obj
  
-INCLUDE2 = ..\ugs2-tcc-ia\include
-SRC2 = ..\ugs2-tcc-ia\src
+INCLUDE2 = ../ugs2-tcc-ia/include
+SRC2 = ../ugs2-tcc-ia/src
 
 CXX = g++ -Wall -fexceptions -O2 -DSFML_STATIC
 SFML = -lsfml-graphics-s -lsfml-window-s -lsfml-audio-s -lsfml-network-s -lsfml-system-s 

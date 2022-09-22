@@ -45,7 +45,7 @@ class UGSScreenGame : public UGSFunctions
 
         std::vector<sf::Text> ia_logs;
 
-        //NeuroEvolutiveEngine engine;
+        NeuroEvolutiveEngine engine;
 };
 
 #endif // UGSSCREENGAME_H
