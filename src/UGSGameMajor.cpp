@@ -195,12 +195,12 @@ void UGSGameMajor::gameButtonsControl(){
 
     /// Essa variavel vai cotrolar se foi apertado algum tile ou nao.
     /// se foi apertado e acertado em cima do tile, ele vai ser true e nao vai ter som de erro.
-    /// se nao, ele sera falso e emitirá o som de erro;
+    /// se nao, ele sera falso e emitirï¿½ o som de erro;
     bool tileHitted[5] = {false,false,false,false,false};
 
-    /// Essa variavel controla o pressionamento de botao para não ficar
+    /// Essa variavel controla o pressionamento de botao para nï¿½o ficar
     /// continuo, ele so aceita um toque por vez.
-    /// OBS. ISSO SÓ SE APLICA AO SOM DE ERRO. FOI CRIADO EXCLUSIVAMENTE PRO SOM DE ERRO.
+    /// OBS. ISSO Sï¿½ SE APLICA AO SOM DE ERRO. FOI CRIADO EXCLUSIVAMENTE PRO SOM DE ERRO.
     static bool pressControl[5] = {true,true,true,true,true};
 
 
@@ -212,7 +212,7 @@ void UGSGameMajor::gameButtonsControl(){
             if(mTile[i].getPosition().y > 490 && mTile[i].getPosition().y < 580
                 && mTile[i].getType() == UGSColor::GREEN ){
 
-                /// Enquanto o som de erro não parar, ficara bloqueado o hit do tile.
+                /// Enquanto o som de erro nï¿½o parar, ficara bloqueado o hit do tile.
                 /// Isso evitara que o jogador fique pressionado o tempo todo ganhando ponto.
                 if(mSoundError[0].getStatus() != sf::SoundSource::Playing){
                     mTile[i].hit();
@@ -393,13 +393,13 @@ void UGSGameMajor::setMusicVolumeHighORLow(bool high_low){
     if(high_low){
         mMusic.setVolume(100);
     } else {
-        mMusic.setVolume(10);
+        mMusic.setVolume(0);
     }
 }
 
 void UGSGameMajor::draw(sf::RenderWindow& window){
-   /// aqqui será detectado a diferenca de pontuação frame a frame para o calculo do ROCK.
-   /// se a diferença for pra mais, ele incrementa, se for pra menos, ele decrementa;
+   /// aqqui serï¿½ detectado a diferenca de pontuaï¿½ï¿½o frame a frame para o calculo do ROCK.
+   /// se a diferenï¿½a for pra mais, ele incrementa, se for pra menos, ele decrementa;
    static int rockControl = 0;
    if(mConsecutiveNotesNow > rockControl) { mRock++; } else if
      (mConsecutiveNotesNow < rockControl) { mRock--; }
@@ -413,7 +413,7 @@ void UGSGameMajor::draw(sf::RenderWindow& window){
 
     rockControl = mConsecutiveNotesNow;
 
-    /// aqui será calculado as notas consecutivas e tudo relacionado com o vector de bool que guarda essas informaçãoes (mSequenceBoolTiles)
+    /// aqui serï¿½ calculado as notas consecutivas e tudo relacionado com o vector de bool que guarda essas informaï¿½ï¿½oes (mSequenceBoolTiles)
     /// NOTAS CONSECUTIVAS AGORA
     mConsecutiveNotesNow = 0;
     for(unsigned i=0;i<mSequenceBoolTiles.size();i++){
@@ -429,7 +429,7 @@ void UGSGameMajor::draw(sf::RenderWindow& window){
         mConsecutiveNotesRecord = mConsecutiveNotesNow;
     }
 
-    /// DEFINICAO DO MULTIPLICADOR: DE QUANTAS NOTAS CONSECUTIVAS PRECISO PRA AUMENTYAR +1 (POR ENQUANTO SERÁ 10 COM LIMITE DE 5X)
+    /// DEFINICAO DO MULTIPLICADOR: DE QUANTAS NOTAS CONSECUTIVAS PRECISO PRA AUMENTYAR +1 (POR ENQUANTO SERï¿½ 10 COM LIMITE DE 5X)
     mMultiplicator = (mConsecutiveNotesNow / 10) + 1;
     if(mMultiplicator <= 0){ mMultiplicator = 1;}
     if(mMultiplicator >  5){ mMultiplicator = 5;}
@@ -439,10 +439,10 @@ void UGSGameMajor::draw(sf::RenderWindow& window){
     window.draw (mShadow, mTransform);
 
 
-    /// Geração dos Tiles em tempo real.
+    /// Geraï¿½ï¿½o dos Tiles em tempo real.
     /// Pra ser gerado, compara-se o tempo do clock com o tempo do tile e
     /// depois vejo o contador, que nao deve ter o tamanho superior ao size() do vector que
-    /// guarda as informações dos tiles. Se isso acontecesse, ele geraria mais peça e seriam aleatorias;
+    /// guarda as informaï¿½ï¿½es dos tiles. Se isso acontecesse, ele geraria mais peï¿½a e seriam aleatorias;
     if(mClock.getElapsedTime().asSeconds() > mSequenceTilesInfo[mTilesDownCount].musicTime
        && (unsigned)mTilesDownCount < mSequenceTilesInfo.size()){
         int type        = mSequenceTilesInfo[mTilesDownCount].type;
@@ -457,8 +457,8 @@ void UGSGameMajor::draw(sf::RenderWindow& window){
     //ss << "downCount: " << mTilesDownCount << "   mTile " << mTile.size();
     //mUserName.setString(ss.str());
 
-    /// Os tiles comecam a descer antes de tocar a música usando o tempo desse sf::Clock
-    /// A musica só comeca depois de alguns instantes (floatPlayControlSync)
+    /// Os tiles comecam a descer antes de tocar a mï¿½sica usando o tempo desse sf::Clock
+    /// A musica sï¿½ comeca depois de alguns instantes (floatPlayControlSync)
     static float floatPlayControlSync = 0;
     if(mSpeed ==  6){floatPlayControlSync = 1.62;} else
     if(mSpeed ==  7){floatPlayControlSync = 1.40;} else
@@ -487,7 +487,7 @@ void UGSGameMajor::draw(sf::RenderWindow& window){
 
 
     for(unsigned i=0;i<mTile.size();i++){
-        /// Destruição de tiles em tempo real.
+        /// Destruiï¿½ï¿½o de tiles em tempo real.
         if(mTile[i].getPosition().y > 800){
             bool tileState = mTile[i].isFinalized();
             mSequenceBoolTiles.push_back(tileState); /// Antes dos tiles serem destruidos, vai ser guardado o estado dele para conbstagem de notas consecutivas
@@ -526,6 +526,13 @@ void UGSGameMajor::draw(sf::RenderWindow& window){
     window.draw(mShineHit[0], mTransform);
 
 }
+
+std::vector<float> UGSGameMajor::tccGetDistances()
+{
+    tccDistances = {111.0,122.0,133.0,144.0,155.0};
+    return tccDistances;
+}
+
 //mMusic
 int UGSGameMajor::getConsecutiveNotesNow(){
     return mConsecutiveNotesNow;

@@ -75,15 +75,16 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
     ia_logs[0].setPosition(sf::Vector2f(740,195));
 
     logs = "Distancias\n[verd|123]\n[verm|123]\n[amar|123]\n[azul|123]\n[lara|123]\n";
-    ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 24, sf::Color(255,255,255), logs));
+    ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 20, sf::Color(255,255,255), logs));
+    ia_logs[1].setLineSpacing(1.25);
     ia_logs[1].setPosition(sf::Vector2f(740,220));
    
     logs = "Pontos\n[1234]";
-    ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 24, sf::Color(255,255,255), logs));
+    ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 22, sf::Color(255,255,255), logs));
     ia_logs[2].setPosition(sf::Vector2f(910,220));
 
     logs = "N.Cons\n[1/10]";
-    ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 24, sf::Color(255,255,255), logs));
+    ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 22, sf::Color(255,255,255), logs));
     ia_logs[3].setPosition(sf::Vector2f(910,330));
 
     logs = "R. Neural\n[decisao]\n[verd|xx]\n[verm|  ]\n[amar|xx]\n[azul|  ]\n[lara|  ]";
@@ -95,6 +96,11 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
      "-------------------------------------------\n" ;
     ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 17, sf::Color(255,255,255), logs));
     ia_logs[5].setPosition(sf::Vector2f(740,390));
+
+    logs = "                      "
+    "Tempo(seg)   [12/323]\n";
+    ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 17, sf::Color(255,255,255), logs));
+    ia_logs[6].setPosition(sf::Vector2f(740,450));
 
 }
 
@@ -178,10 +184,24 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
 
 
     // TCC - atualização do status
-    std::string pontos = "Pontos\n[" + (std::to_string(mGameMajor->getScore()) + "]\n");
-    std::string notasCons = "N. Cons\n[" + std::to_string(mGameMajor->getConsecutiveNotesNow()) + "]";
-    ia_logs[2].setString(pontos);
-    ia_logs[3].setString(notasCons);
+    std::string log = "Pontos\n[" + (std::to_string(mGameMajor->getScore()) + "]\n");
+    ia_logs[2].setString(log);
+
+    log = "N. Cons\n[" + std::to_string(mGameMajor->getConsecutiveNotesNow()) + "/10]";
+    ia_logs[3].setString(log);
+
+    std::vector<float> distances = mGameMajor->tccGetDistances();
+    std::stringstream ss;
+    ss << std::fixed << std::setprecision(1) 
+    << "Distancias\n[verd|" << distances[0] <<"]\n[verm|" << distances[1] 
+    <<"]\n[amar|" << distances[2] <<"]\n[azul|" << distances[3] <<"]\n[lara|" << distances[4] <<"]\n";
+    ia_logs[1].setString(ss.str());
+
+    int timeNow = mGameMajor->getMusicTimeCurrent();
+    int timeTotal = mGameMajor->getMusicTimeTotal();
+    log = "                     "
+    "Tempo(seg)   [" + std::to_string(timeNow) + "/" + std::to_string(timeTotal) + "]\n";
+    ia_logs[6].setString(log);
 }
 
 bool UGSScreenGame::getPermissionToShow(){

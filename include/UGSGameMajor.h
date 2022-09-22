@@ -38,6 +38,8 @@ class UGSGameMajor : public UGSFunctions
         void stopAudio();
 
         void setTransform(sf::Transform transform);
+
+        std::vector<float> tccGetDistances();
     protected:
 
     private:
@@ -53,15 +55,15 @@ class UGSGameMajor : public UGSFunctions
         std::vector<sf::Sprite> mShineHit;
         std::vector<sf::Sprite> mHole;
         std::vector<UGSTile>    mTile;
-        std::vector<bool>       mSequenceBoolTiles; /// este vector terá o tamanho da quantidade de notas. se acretar, true na msm posicao relativa ao tile
+        std::vector<bool>       mSequenceBoolTiles; /// este vector terï¿½ o tamanho da quantidade de notas. se acretar, true na msm posicao relativa ao tile
                                                     /// se nao, coloca-se false. depois o jogo vai pegar esse vector e calcular as notas consecutivas.
 
         std::vector<sequenceTilesInfo> mSequenceTilesInfo;
 
         UGSMat mMat;
 
-        sf::Music  mMusic; /// audio do intrumento principal que será jogado
-        sf::Music  mIntro; /// audio da introdução do jogo//
+        sf::Music  mMusic; /// audio do intrumento principal que serï¿½ jogado
+        sf::Music  mIntro; /// audio da introduï¿½ï¿½o do jogo//
         sf::Music  mMusicBackground[4]; /// background instrument /// tentei usar o std::vector mas nao aceitou o .pushback() //
         sf::Music  mMusicBackgroundOgg; /// background background.ogg //
 
@@ -85,13 +87,15 @@ class UGSGameMajor : public UGSFunctions
         int  mConsecutiveNotesNow; /// Contador em tempo real das notas consecutivas
         int  mRock;               /// armazena valor do ROCK, pra que o ponteiro do UGSRock possa mostrar// varia de 0 - 100
         int  mShineHitAlpha[5];        /// Transparencioa do shineHit que o faz ficar piscando
-        char mKeyboardConfig[6];       /// define quais os botoes do teclado serão usados no jogo
+        char mKeyboardConfig[6];       /// define quais os botoes do teclado serï¿½o usados no jogo
         int  mPosX;
         int  mPosY;
 
         void gameButtonsControl();
         void setMusicVolumeHighORLow(bool high_low);
         void startShineHit(int shineColor, bool isError);
+
+        std::vector<float> tccDistances;
 };
 
 #endif // UGSGAMEMAJOR_H

@@ -4,6 +4,7 @@
 #include <SFML/Audio.hpp>
 #include <sstream>
 #include <iostream>
+#include <iomanip>
 #include "UGSNotasConsecutivas.h"
 #include "UGSRock.h"
 #include "UGSMusicPlayer.h"
