@@ -154,7 +154,7 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
     mRock->setRockStatus    (mGameMajor->getRock()*5);
     mRock->setScore         (mGameMajor->getScore());
     mRock->setMultiplicator (mGameMajor->getMultiplicator());
-    mRock->draw             (window);
+    //#TCC mRock->draw             (window);
 
 
     mNotasConsec->draw(window);
