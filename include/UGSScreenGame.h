@@ -39,7 +39,7 @@ class UGSScreenGame : public UGSFunctions
 
         bool mPermissionToShow;
 
-        sf::Text ia_logs;
+        std::vector<sf::Text> ia_logs;
 };
 
 #endif // UGSSCREENGAME_H

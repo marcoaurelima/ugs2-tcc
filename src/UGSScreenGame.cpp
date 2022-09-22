@@ -70,11 +70,21 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
 
     mMusicPlayer = new UGSMusicPlayer(570, 118);
 
-    std::string logs = 
-    "Distancias\n[verd|123]\n[verm|123]\n[amar|123]\n[azul|123]\n[lara|123]\n";
+    std::string logs = "Distancias\n[verd|123]\n[verm|123]\n[amar|123]\n[azul|123]\n[lara|123]\n";
+    ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 24, sf::Color(255,255,255), logs));
+    ia_logs[0].setPosition(sf::Vector2f(700,150));
+   
+    logs = "Pontos\n[1234]";
+    ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 24, sf::Color(255,255,255), logs));
+    ia_logs[1].setPosition(sf::Vector2f(870,150));
 
-    ia_logs = create_SFtext("c:/windows/fonts/consola.ttf", 24, sf::Color(255,255,255), logs);
-    ia_logs.setPosition(sf::Vector2f(700,150));
+    logs = "N.Cons\n[1/10]";
+    ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 24, sf::Color(255,255,255), logs));
+    ia_logs[2].setPosition(sf::Vector2f(870,260));
+
+    logs = "R. Neural\n[decisao]\n[verd|xx]\n[verm|  ]\n[amar|xx]\n[azul|  ]\n[lara|  ]";
+    ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 20, sf::Color(255,255,0), logs));
+    ia_logs[3].setPosition(sf::Vector2f(990,155));
 
 
 }
@@ -153,7 +163,9 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
     window.draw(mTCC_BandBG);
     window.draw(mTCC_BangLogo);
 
-    window.draw(ia_logs);
+    for(unsigned int i=0; i<ia_logs.size(); i++){
+        window.draw(ia_logs[i]);
+    }
 }
 
 bool UGSScreenGame::getPermissionToShow(){
