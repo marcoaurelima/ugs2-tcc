@@ -1,8 +1,8 @@
-///**** OBSERVAÇÕES IMPORTANTES ****///
+///**** OBSERVAï¿½ï¿½ES IMPORTANTES ****///
 /*
 
- ** Algumas implementações de sprites, principalmente os que dizem respeito a instrumentos
-      podem ter uma implementação aparentemente não eficiente. Mas isso não é verdade.
+ ** Algumas implementaï¿½ï¿½es de sprites, principalmente os que dizem respeito a instrumentos
+      podem ter uma implementaï¿½ï¿½o aparentemente nï¿½o eficiente. Mas isso nï¿½o ï¿½ verdade.
       a forma como foi implementado visa possibilitar o carregamento de sprites com texturas iguais,
       para que seja possivel instrumentos repetidos (ex.: Guitarra 1, Guitarra 2, etc).
 
@@ -86,7 +86,7 @@ int main()
     info.backgrounCodes = std::vector<int>{2,3};
     info.bandName = "G-Off";
     info.dificultyCode = 1;
-    info.folderCode = 3;
+    info.folderCode = 1;
     info.instrumentCode = 1;
     info.misicName = "Quando eu acordar";
     info.playerName = "Marco";

@@ -38,6 +38,8 @@ class UGSScreenGame : public UGSFunctions
         sf::Sprite mTCC_BangLogo;
 
         bool mPermissionToShow;
+
+        sf::Text ia_logs;
 };
 
 #endif // UGSSCREENGAME_H

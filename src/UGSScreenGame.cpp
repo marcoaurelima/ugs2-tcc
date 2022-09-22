@@ -13,12 +13,12 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
 
     mTCC_BandBG = create_SFsprite("songs/" + std::to_string(gameInfo->folderCode) + "/picture/poster.png");
     mTCC_BandBG.setScale(0.49,0.49);
-    mTCC_BandBG.setPosition(670,130);
+    mTCC_BandBG.setPosition(670+2000,130);
     mTCC_BandBG.setColor(sf::Color(255,255,255,160));
 
     mTCC_BangLogo = create_SFsprite("songs/" + std::to_string(gameInfo->folderCode) + "/picture/logo.png");
     mTCC_BangLogo.setScale(0.8,0.8);
-    mTCC_BangLogo.setPosition(1120,340);
+    mTCC_BangLogo.setPosition(1120+2000,340);
     mTCC_BangLogo.setColor(sf::Color(255,255,255,230));
 
     std::string musicPath;
@@ -51,24 +51,30 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
     mView      = sf::View(sf::FloatRect(-500,17,500,654));
     mView.setViewport(sf::FloatRect(0.020,0.030,0.37,0.851));
 
-    // ATENÇÃO: NÃO PAGUE ESTE COMENTÁRIO!!!
-    // - Devido ao TCC, não usarei esse widget pois nao irei precisar dele.
+    // ATENï¿½ï¿½O: Nï¿½O PAGUE ESTE COMENTï¿½RIO!!!
+    // - Devido ao TCC, nï¿½o usarei esse widget pois nao irei precisar dele.
     //mScoreMajor = new UGSScoreMajor(87,683);
     mScoreMajor = new UGSScoreMajor(-1000,683);
 
     mRock = new UGSRock(560,570);
     mRock->setBandName(gameInfo->bandName);
     mRock->setMusicName(gameInfo->misicName);
-    //for(int i=0;i<100;i++){ /// COLOQUEI NO LACO FOR PRA EVITAR UM BUG. ELE SO INICIA CORRETAMENTE DEPOIS QUE SE COLOCA VÁRIOS VALORES
+    //for(int i=0;i<100;i++){ /// COLOQUEI NO LACO FOR PRA EVITAR UM BUG. ELE SO INICIA CORRETAMENTE DEPOIS QUE SE COLOCA Vï¿½RIOS VALORES
     mRock->setRockStatus(50);
     //}
 
-    // ATENÇÃO: NÃO PAGUE ESTE COMENTÁRIO!!!
-    // - Devido ao TCC, não usarei esse widget pois nao irei precisar dele.
+    // ATENï¿½ï¿½O: Nï¿½O PAGUE ESTE COMENTï¿½RIO!!!
+    // - Devido ao TCC, nï¿½o usarei esse widget pois nao irei precisar dele.
     //mNotasConsec = new UGSNotasConsecutivas(1085,586);
     mNotasConsec = new UGSNotasConsecutivas(3000,586);
 
     mMusicPlayer = new UGSMusicPlayer(570, 118);
+
+
+    ia_logs = create_SFtext("c:/windows/fonts/consola.ttf", 28, sf::Color(255,255,255), "Marco Aurelio 02954");
+    ia_logs.setPosition(sf::Vector2f(700,150));
+
+
 }
 
 UGSScreenGame::UGSScreenGame()
@@ -85,7 +91,7 @@ UGSScreenGame::UGSScreenGame()
     mScoreMajor = new UGSScoreMajor(87,683);
 
     mRock = new UGSRock(560,570);
-    for(int i=0;i<100;i++){ /// COLOQUEI NO LACO FOR PRA EVITAR UM BUG. ELE SO INICIA CORRETAMENTE DEPOIS QUE SE COLOCA VÁRIOS VALORES
+    for(int i=0;i<100;i++){ /// COLOQUEI NO LACO FOR PRA EVITAR UM BUG. ELE SO INICIA CORRETAMENTE DEPOIS QUE SE COLOCA Vï¿½RIOS VALORES
         mRock->setRockStatus(i);
     }
 
@@ -144,6 +150,8 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
 
     window.draw(mTCC_BandBG);
     window.draw(mTCC_BangLogo);
+
+    window.draw(ia_logs);
 }
 
 bool UGSScreenGame::getPermissionToShow(){
