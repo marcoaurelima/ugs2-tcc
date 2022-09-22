@@ -101,7 +101,7 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
 
     logs = "                      "
     "Tempo(seg)   [12/323]\n";
-    ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 17, sf::Color(255,255,255), logs));
+    ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 17, sf::Color(255,255,0), logs));
     ia_logs[6].setPosition(sf::Vector2f(740,450));
 
 }
@@ -195,8 +195,18 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
     std::vector<float> distances = mGameMajor->tccGetDistances();
     std::stringstream ss;
     ss << std::fixed << std::setprecision(1) 
-    << "Distancias\n[verd|" << distances[0] <<"]\n[verm|" << distances[1] 
-    <<"]\n[amar|" << distances[2] <<"]\n[azul|" << distances[3] <<"]\n[lara|" << distances[4] <<"]\n";
+    << "Distancias\n"
+    "[verd|"; 
+    if(distances[0] != -1){ ss << distances[0]; } else {ss << "-----";}
+    ss <<"]\n[verm|";
+    if(distances[1] != -1){ ss << distances[1]; } else {ss << "-----";}
+    ss <<"]\n[amar|";
+    if(distances[2] != -1){ ss << distances[2]; } else {ss << "-----";}
+    ss <<"]\n[azul|";
+    if(distances[3] != -1){ ss << distances[3]; } else {ss << "-----";}
+    ss <<"]\n[lara|";
+    if(distances[4] != -1){ ss << distances[4]; } else {ss << "-----";}
+    ss <<"]\n";
     ia_logs[1].setString(ss.str());
 
     int timeNow = mGameMajor->getMusicTimeCurrent();
