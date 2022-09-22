@@ -70,8 +70,10 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
 
     mMusicPlayer = new UGSMusicPlayer(570, 118);
 
+    std::string logs = 
+    "Distancias\n[verd|123]\n[verm|123]\n[amar|123]\n[azul|123]\n[lara|123]\n";
 
-    ia_logs = create_SFtext("c:/windows/fonts/consola.ttf", 28, sf::Color(255,255,255), "Marco Aurelio 02954");
+    ia_logs = create_SFtext("c:/windows/fonts/consola.ttf", 24, sf::Color(255,255,255), logs);
     ia_logs.setPosition(sf::Vector2f(700,150));
 
 
