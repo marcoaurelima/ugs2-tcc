@@ -14,6 +14,9 @@
 #include "UGSMat.h"
 #include "UGSfunctions.h"
 
+#include "NeuroEvolutiveEngine.h"
+
+
 class UGSScreenGame : public UGSFunctions
 {
     public:
@@ -41,6 +44,8 @@ class UGSScreenGame : public UGSFunctions
         bool mPermissionToShow;
 
         std::vector<sf::Text> ia_logs;
+
+        //NeuroEvolutiveEngine engine;
 };
 
 #endif // UGSSCREENGAME_H

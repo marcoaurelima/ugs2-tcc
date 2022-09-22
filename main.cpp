@@ -25,6 +25,7 @@
 #include "UGSMenuMainNovoJogo.h"
 #include "UGSMenuMainNovoJogoStep2.h"
 
+
 void screenMain(sf::RenderWindow& window){ /// menu principal
 
     sf::Texture textureClose;
@@ -36,7 +37,6 @@ void screenMain(sf::RenderWindow& window){ /// menu principal
     UGSFunctions functions;
 
     UGSMenuMain menuMain;
-
 
     sf::Event event;
     while (window.isOpen()){
