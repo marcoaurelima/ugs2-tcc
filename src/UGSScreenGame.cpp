@@ -47,6 +47,8 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
 
     //mGameMajor = new UGSGameMajor(-500, 20, velocity, musicPath, sequenceTilePath, userName, instrumentName);
     mGameMajor = new UGSGameMajor(-500, 20, velocity, gameInfo->folderCode, musicPath, gameInfo->backgrounCodes, sequenceTilePath, userName, instrumentName);
+    //#TCC
+    //mGameMajor->stopAudio();
 
     mView      = sf::View(sf::FloatRect(-500,17,500,654));
     mView.setViewport(sf::FloatRect(0.020,0.030,0.37,0.851));

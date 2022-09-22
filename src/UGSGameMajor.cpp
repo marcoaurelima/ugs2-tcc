@@ -63,7 +63,7 @@ UGSGameMajor::UGSGameMajor(int posX, int posY, int speed, int folderCode, std::s
     mStar.setPosition    (posX+442, posY+619);
     mShadow.setPosition  (posX+69,  posY+37);
     mShadow.setColor     (sf::Color(255,255,255,175));
-
+    
     mMat = UGSMat(posX, posY, mSpeed, 10);
 
     mLife.setFillColor (sf::Color::Green);
@@ -110,6 +110,7 @@ UGSGameMajor::UGSGameMajor(int posX, int posY, int speed, int folderCode, std::s
     mMusic.setVolume(100);
 
 
+
     mSoundBuffer.loadFromFile("media/error.ogg");
     mSoundError[0].setBuffer(mSoundBuffer);
     mSoundError[0].setVolume(15);
@@ -150,6 +151,8 @@ UGSGameMajor::UGSGameMajor(int posX, int posY, int speed, int folderCode, std::s
     mTilesRes.shineBodyRes  = create_SFsprite("GUI/widgets/gameMajor/gameMajorShine2.png");
     mTilesRes.soundErrorRes = new sf::Music;
 
+    tccDistances = std::vector<float>(5);
+    std::cout << "tc distancia: " << tccDistances.size() << std::endl;
     //ctor
 }
 
@@ -467,6 +470,8 @@ void UGSGameMajor::draw(sf::RenderWindow& window){
     if(mSpeed == 10){floatPlayControlSync = 0.92;} else
     if(mSpeed == 11){floatPlayControlSync = 0.62;}
 
+    
+
     static bool boolPlayControl = true;
     if(mClock.getElapsedTime().asSeconds() > floatPlayControlSync && boolPlayControl){
         mMusic.play();
@@ -478,11 +483,41 @@ void UGSGameMajor::draw(sf::RenderWindow& window){
         boolPlayControl = !boolPlayControl;
     }
 
+
     for(unsigned i=0;i<mTile.size();i++){
         if(mClock.getElapsedTime().asSeconds() > mTile[i].getMusicTime()){
             mTile[i].goDown();
         }
     }
+
+    //#TCC
+    // O valor de -1 representa um valor não existente
+    tccDistances = {-1,-1,-1,-1,-1};
+    
+    for(unsigned i=0;i<mTile.size();i++){
+        if(mTile[i].getType() == 0 && tccDistances[0] == -1 && mTile[i].getPosition().y < 540)
+        {
+            tccDistances[0] = 540.0 - mTile[i].getPosition().y;
+        } else 
+        if(mTile[i].getType() == 1 && tccDistances[1] == -1 && mTile[i].getPosition().y < 540)
+        {
+            tccDistances[1] = 540.0 - mTile[i].getPosition().y;
+        } else 
+        if(mTile[i].getType() == 2 && tccDistances[2] == -1 && mTile[i].getPosition().y < 540)
+        {
+            tccDistances[2] = 540.0 - mTile[i].getPosition().y;
+        } else 
+        if(mTile[i].getType() == 3 && tccDistances[3] == -1 && mTile[i].getPosition().y < 540)
+        {
+            tccDistances[3] = 540.0 - mTile[i].getPosition().y;
+        } else 
+        if(mTile[i].getType() == 4 && tccDistances[4] == -1 && mTile[i].getPosition().y < 540)
+        {
+            tccDistances[4] = 540.0 - mTile[i].getPosition().y;
+        }  
+    }
+
+    //tccDistances[0] = mTile[mTile.size()-1].getPosition().y;
 
 
 
@@ -529,7 +564,7 @@ void UGSGameMajor::draw(sf::RenderWindow& window){
 
 std::vector<float> UGSGameMajor::tccGetDistances()
 {
-    tccDistances = {111.0,122.0,133.0,144.0,155.0};
+    //tccDistances = {111.0,122.0,133.0,144.0,155.0};
     return tccDistances;
 }
 

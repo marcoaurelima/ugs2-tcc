@@ -90,8 +90,12 @@ int main()
     info.instrumentCode = 1;
     info.misicName = "Quando eu acordar";
     info.playerName = "Marco";
-    info.speed = 8;
+    info.speed = 6;
+    //info.speed = 1;
     UGSScreenGame gameTst(&info);
+
+    sf::CircleShape circleShape(20);
+    circleShape.setPosition(sf::Vector2f(100, 510));
 
      sf::Event event;
     while (window.isOpen()){
@@ -114,6 +118,8 @@ int main()
             spriteClose.setColor(sf::Color(255,255,255,120));
         }
         window.draw(spriteClose);
+
+        //window.draw(circleShape);
         window.display();
     }
 
