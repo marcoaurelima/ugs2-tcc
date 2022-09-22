@@ -97,6 +97,7 @@ class UGSGameMajor : public UGSFunctions
         void startShineHit(int shineColor, bool isError);
 
         std::vector<float> tccDistances;
+        std::vector<bool> tccTeclas;
 };
 
 #endif // UGSGAMEMAJOR_H
