@@ -103,6 +103,24 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
     "Tempo(seg)   [12/323]\n";
     ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 17, sf::Color(255,255,0), logs));
     ia_logs[6].setPosition(sf::Vector2f(740,450));
+    // população inicial
+    population = Population();
+    population.createInitialPopulation(5, 27);
+    population.setNewGenerationParams(NewGenParams{
+        SELECTION_TYPE::ROULLETE,
+        CROSSOVER_TYPE::SINGLE_POINT,
+        MUTATION_TYPE::INSERTION});
+
+    // definição da topologia da rede neural
+    network = NeuralNetwork();
+    network.setInputLayer(InputLayerInfo(2));
+    network.setHiddenLayer(HiddenLayerInfo({3, 3}, ACTFUNC::SIGMOID));
+    network.setOutputLayer(OutputLayerInfo(1, ACTFUNC::SIGMOID));
+
+    engine = NeuroEvolutiveEngine(population, network);
+    //engine.showInternalStatus();
+/*
+    */
 
 }
 
