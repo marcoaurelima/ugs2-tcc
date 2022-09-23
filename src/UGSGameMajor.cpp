@@ -89,8 +89,8 @@ UGSGameMajor::UGSGameMajor(int posX, int posY, int speed, int folderCode, std::s
     mInstrumentName.setOrigin  (sf::Vector2f(mInstrumentName.getLocalBounds().width/2, 0));
     mInstrumentName.setPosition(posX+242, posY+623);
 
-    mIntro.openFromFile("media/intro.ogg");
-    mIntro.play();
+    //mIntro.openFromFile("media/intro.ogg");
+    //mIntro.play();
 
     /// int speed, std::string musicPath, std::vector<int>& backgroudCodes,
     /// std::string tileSequencePath, std::string userName, std::string instrumentName
@@ -182,7 +182,7 @@ void UGSGameMajor::restart()
         mMusicBackground[i].stop();
     }
 
-    mIntro.stop();
+    //mIntro.stop();
 
     floatPlayControlSync = 0;
     boolPlayControl = true;
@@ -202,7 +202,7 @@ int UGSGameMajor::getScore(){
 
 void UGSGameMajor::stopAudio(){
     mMusic.stop();
-    mIntro.stop();
+    //mIntro.stop();
     mMusicBackground[0].stop();
     mMusicBackground[1].stop();
     mMusicBackground[2].stop();
