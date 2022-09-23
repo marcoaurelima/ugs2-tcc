@@ -118,7 +118,7 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
     network.setOutputLayer(OutputLayerInfo(1, ACTFUNC::SIGMOID));
 
     engine = NeuroEvolutiveEngine(population, network);
-
+    
 }
 
 UGSScreenGame::UGSScreenGame()

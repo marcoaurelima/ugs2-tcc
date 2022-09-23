@@ -156,17 +156,20 @@ UGSGameMajor::UGSGameMajor(int posX, int posY, int speed, int folderCode, std::s
 
     floatPlayControlSync = 0;
     boolPlayControl = true;
+
+    
+    
     //ctor
 }
 
 void UGSGameMajor::restart()
 {
-    std::cout << "------------------ restart --------------------" << std::endl;
-    
+  
     tccDistances = std::vector<float>(5);
     tccTeclas = std::vector<bool>(5);
     mSequenceBoolTiles.clear();
 
+    mScore = 0;
     mTilesDownCount = 0;
     mConsecutiveNotesNow = 0;
     mConsecutiveNotesRecord = 0;

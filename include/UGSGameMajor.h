@@ -103,6 +103,7 @@ class UGSGameMajor : public UGSFunctions
 
         bool boolPlayControl = true;
         float floatPlayControlSync = 0;
+
 };
 
 #endif // UGSGAMEMAJOR_H

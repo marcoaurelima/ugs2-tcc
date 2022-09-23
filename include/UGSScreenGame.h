@@ -49,6 +49,7 @@ class UGSScreenGame : public UGSFunctions
         Population population;
         NeuralNetwork network;
         NeuroEvolutiveEngine engine;
+        
 };
 
 #endif // UGSSCREENGAME_H
