@@ -41,6 +41,8 @@ class UGSGameMajor : public UGSFunctions
         void setTransform(sf::Transform transform);
 
         std::vector<float> tccGetDistances();
+
+        void restart();
     protected:
 
     private:
@@ -98,6 +100,9 @@ class UGSGameMajor : public UGSFunctions
 
         std::vector<float> tccDistances;
         std::vector<bool> tccTeclas;
+
+        bool boolPlayControl = true;
+        float floatPlayControlSync = 0;
 };
 
 #endif // UGSGAMEMAJOR_H

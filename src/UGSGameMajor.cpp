@@ -154,8 +154,42 @@ UGSGameMajor::UGSGameMajor(int posX, int posY, int speed, int folderCode, std::s
     tccDistances = std::vector<float>(5);
     tccTeclas = std::vector<bool>(5);
 
+    floatPlayControlSync = 0;
+    boolPlayControl = true;
     //ctor
 }
+
+void UGSGameMajor::restart()
+{
+    std::cout << "------------------ restart --------------------" << std::endl;
+    
+    tccDistances = std::vector<float>(5);
+    tccTeclas = std::vector<bool>(5);
+    mSequenceBoolTiles.clear();
+
+    mTilesDownCount = 0;
+    mConsecutiveNotesNow = 0;
+    mConsecutiveNotesRecord = 0;
+    mRock=0;
+
+    mTile.clear();
+    mClock.restart();
+
+    mMusic.stop();
+    mMusicBackgroundOgg.stop();
+    for(unsigned int i = 0; i < 4;i++)
+    {
+        mMusicBackground[i].stop();
+    }
+
+    mIntro.stop();
+
+    floatPlayControlSync = 0;
+    boolPlayControl = true;
+
+}
+
+
 
 UGSGameMajor::~UGSGameMajor()
 {
@@ -207,6 +241,19 @@ void UGSGameMajor::gameButtonsControl(){
     /// OBS. ISSO S� SE APLICA AO SOM DE ERRO. FOI CRIADO EXCLUSIVAMENTE PRO SOM DE ERRO.
     static bool pressControl[5] = {true,true,true,true,true};
 
+    static bool pressControlrestart = true;
+    //bool hitted = false;
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+    {
+        if(pressControlrestart)
+        {
+            restart();
+            pressControlrestart = false;
+        }
+    } else 
+    {
+        pressControlrestart = true;
+    }
 
     if(key_pressed(mKeyboardConfig[0]) || tccTeclas[0]){
 
@@ -463,7 +510,7 @@ void UGSGameMajor::draw(sf::RenderWindow& window){
 
     /// Os tiles comecam a descer antes de tocar a m�sica usando o tempo desse sf::Clock
     /// A musica s� comeca depois de alguns instantes (floatPlayControlSync)
-    static float floatPlayControlSync = 0;
+
     if(mSpeed ==  6){floatPlayControlSync = 1.62;} else
     if(mSpeed ==  7){floatPlayControlSync = 1.40;} else
     if(mSpeed ==  8){floatPlayControlSync = 1.20;} else
@@ -473,7 +520,6 @@ void UGSGameMajor::draw(sf::RenderWindow& window){
 
     
 
-    static bool boolPlayControl = true;
     if(mClock.getElapsedTime().asSeconds() > floatPlayControlSync && boolPlayControl){
         mMusic.play();
         mMusicBackgroundOgg.play();

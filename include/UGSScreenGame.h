@@ -25,6 +25,7 @@ class UGSScreenGame : public UGSFunctions
         virtual ~UGSScreenGame();
         void draw(sf::RenderWindow& window);
         bool getPermissionToShow();
+        void restart();
     protected:
 
     private:

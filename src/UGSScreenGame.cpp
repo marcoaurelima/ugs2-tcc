@@ -118,9 +118,6 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
     network.setOutputLayer(OutputLayerInfo(1, ACTFUNC::SIGMOID));
 
     engine = NeuroEvolutiveEngine(population, network);
-    //engine.showInternalStatus();
-/*
-    */
 
 }
 
@@ -232,8 +229,14 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
     log = "                     "
     "Tempo(seg)   [" + std::to_string(timeNow) + "/" + std::to_string(timeTotal) + "]\n";
     ia_logs[6].setString(log);
+
 }
 
 bool UGSScreenGame::getPermissionToShow(){
     return mPermissionToShow;
+}
+
+void UGSScreenGame::restart()
+{
+    mGameMajor->restart();
 }
