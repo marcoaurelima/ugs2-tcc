@@ -86,8 +86,8 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
     ia_logs[2].setPosition(sf::Vector2f(910,220));
 
     logs = "N.Cons\n[1/10]";
-    ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 22, sf::Color(255,255,255), logs));
-    ia_logs[3].setPosition(sf::Vector2f(910,330));
+    ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 18, sf::Color(255,255,255), logs));
+    ia_logs[3].setPosition(sf::Vector2f(910,343));
 
     logs = "R. Neural\n[decisao]\n[verd|xx]\n[verm|  ]\n[amar|xx]\n[azul|  ]\n[lara|  ]";
     ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 20, sf::Color(255,255,255), logs));
@@ -103,6 +103,12 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
     "Tempo(seg)   [12/323]\n";
     ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 17, sf::Color(255,255,0), logs));
     ia_logs[6].setPosition(sf::Vector2f(740,450));
+
+    logs = "Erros\n[1/10]";
+    ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 18, sf::Color(255,120,120), logs));
+    ia_logs[7].setPosition(sf::Vector2f(910,287));
+
+
     // população inicial
     population = Population();
     population.createInitialPopulation(5, 27);
@@ -204,7 +210,7 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
     std::string log = "Pontos\n[" + (std::to_string(mGameMajor->getScore()) + "]\n");
     ia_logs[2].setString(log);
 
-    log = "N. Cons\n[" + std::to_string(mGameMajor->getConsecutiveNotesNow()) + "/10]";
+    log = "N. Cons\n[" + std::to_string(mGameMajor->getConsecutiveNotesNow()) + "]";
     ia_logs[3].setString(log);
 
     std::vector<float> distances = mGameMajor->tccGetDistances();
@@ -229,6 +235,30 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
     log = "                     "
     "Tempo(seg)   [" + std::to_string(timeNow) + "/" + std::to_string(timeTotal) + "]\n";
     ia_logs[6].setString(log);
+
+    const int MAX_ERRORS = 20;
+    log = "Erros\n[" + std::to_string(mGameMajor->getErrorCount()) + "/" + std::to_string(MAX_ERRORS) + "]";
+    ia_logs[7].setString(log);
+    
+    //#TCC
+    // Parte da tomada de decisão da rede neural
+    float distance = distances[0];
+    float score = mGameMajor->getScore();
+    std::vector<float> decision = engine.takeDecision({distance, score});
+
+    if (decision[0] > 0.8)
+    {
+        mGameMajor->setPressedButton(true, 0);
+    } else 
+    {
+        mGameMajor->setPressedButton(false, 0);
+    }
+
+    if(mGameMajor->getErrorCount() > MAX_ERRORS)
+    {
+        //engine.useNextTopology();
+        //restart();   
+    }
 
 }
 

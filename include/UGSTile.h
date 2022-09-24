@@ -15,11 +15,11 @@ enum UGSColor{
 
 /// Esta struct vai conter a referencia aos recursos pra montagem dos tiles. O jogo ainda ta travando muito
 /// e eu acho que seja por causa do excesso de texturas. vou usar a referencia ao mesmo recurso pra todos
-/// os tiles e ver se fica mais rápido.
+/// os tiles e ver se fica mais rï¿½pido.
 struct TilesResources{
-    sf::Sprite tileRes;      /// Peça que irá descer
-    sf::Sprite shineHeadRes; /// Rastro da nota, quando ha duração maior dela
-    sf::Sprite shineBodyRes; /// Parte de cima do rastro; Cabeça
+    sf::Sprite tileRes;      /// Peï¿½a que irï¿½ descer
+    sf::Sprite shineHeadRes; /// Rastro da nota, quando ha duraï¿½ï¿½o maior dela
+    sf::Sprite shineBodyRes; /// Parte de cima do rastro; Cabeï¿½a
     sf::Music* soundErrorRes;
 };
 
@@ -28,7 +28,7 @@ class UGSTile : public UGSFunctions
 {
     public:
         UGSTile();
-        UGSTile(int posX, int posY, int type, float duration, float speed, float musicTime, TilesResources tilesRes);
+        UGSTile(int posX, int posY, int type, float duration, float speed, float musicTime, TilesResources tilesRes, int* tccErrorContRef);
         virtual ~UGSTile();
 
         void  draw(sf::RenderWindow& window, sf::Transform transform, int& errorControlRock, sf::Music& music);
@@ -37,7 +37,7 @@ class UGSTile : public UGSFunctions
         void  eraseTrace();
         void  setTransparent(); /// Faz o tile ficar 100% transparente
         bool  isFinalized();    /// Diz se o tile foi finalizado e o rastro totalmente gasto;
-        void  goDown();      /// informa ao tile que ele já pode descer depois que foi gerado.
+        void  goDown();      /// informa ao tile que ele jï¿½ pode descer depois que foi gerado.
         void  move(float x, float y);
         float getDuration();
         int   getType();
@@ -46,24 +46,26 @@ class UGSTile : public UGSFunctions
 
         sf::Sprite&  getSprite();
         sf::Vector2f getPosition();
-
+      
     protected:
 
     private:
-        sf::Sprite      mTile;      /// Peça que irá descer
-        sf::Sprite      mShineHead; /// Rastro da nota, quando ha duração maior dela
-        sf::Sprite      mShineBody; /// Parte de cima do rastro; Cabeça
+        sf::Sprite      mTile;      /// Peï¿½a que irï¿½ descer
+        sf::Sprite      mShineHead; /// Rastro da nota, quando ha duraï¿½ï¿½o maior dela
+        sf::Sprite      mShineBody; /// Parte de cima do rastro; Cabeï¿½a
         sf::SoundBuffer mSoundBuffer;
         //sf::Sound mSoundError;
         sf::Music* mSoundError;
-        float mDuration;        /// Duraçao do rastro
+        float mDuration;        /// Duraï¿½ao do rastro
         float mSpeed;           /// Velocidade da esteira
-        float mMusicTime;       /// tempo da música em que começa a descer
-        bool  mPlayerError;     /// Diz se o jogador já errou
+        float mMusicTime;       /// tempo da mï¿½sica em que comeï¿½a a descer
+        bool  mPlayerError;     /// Diz se o jogador jï¿½ errou
         bool  mTileFinalized;   /// Diz se o tile foi finalizado e o rastro totalmente gasto;
         bool  mCanGoDown;       /// O tile so vai descer se essa variavel estiver true
         float mScaleY;
         int   mType;            /// Inteiro que representa a cor do tile
+
+        int* tccErrorContRef;
 
 };
 

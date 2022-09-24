@@ -157,6 +157,7 @@ UGSGameMajor::UGSGameMajor(int posX, int posY, int speed, int folderCode, std::s
     floatPlayControlSync = 0;
     boolPlayControl = true;
 
+    tccErrorCount = new int(0);
     
     
     //ctor
@@ -189,6 +190,8 @@ void UGSGameMajor::restart()
 
     floatPlayControlSync = 0;
     boolPlayControl = true;
+
+    *tccErrorCount = 0; 
 
 }
 
@@ -288,6 +291,7 @@ void UGSGameMajor::gameButtonsControl(){
             pressControl[0] = !pressControl[0];
             setMusicVolumeHighORLow(false);
             mRock--;
+            *tccErrorCount = *tccErrorCount + 1;
         }
 
     } else {
@@ -325,6 +329,7 @@ void UGSGameMajor::gameButtonsControl(){
             pressControl[1] = !pressControl[1];
             setMusicVolumeHighORLow(false);
             mRock--;
+            *tccErrorCount = *tccErrorCount + 1;
         }
 
     } else {
@@ -360,6 +365,7 @@ void UGSGameMajor::gameButtonsControl(){
             pressControl[2] = !pressControl[2];
             setMusicVolumeHighORLow(false);
             mRock--;
+            *tccErrorCount = *tccErrorCount + 1;
         }
 
     } else {
@@ -395,6 +401,7 @@ void UGSGameMajor::gameButtonsControl(){
             pressControl[3] = !pressControl[3];
             setMusicVolumeHighORLow(false);
             mRock--;
+            *tccErrorCount = *tccErrorCount + 1;
         }
 
     } else {
@@ -430,6 +437,7 @@ void UGSGameMajor::gameButtonsControl(){
             pressControl[4] = !pressControl[4];
             setMusicVolumeHighORLow(false);
             mRock--;
+            *tccErrorCount = *tccErrorCount + 1;
         }
 
     } else {
@@ -443,12 +451,23 @@ void UGSGameMajor::gameButtonsControl(){
 
 }
 
+void UGSGameMajor::setPressedButton(bool pressed, int button)
+{
+    tccTeclas[button] = pressed;
+}
+
+
 void UGSGameMajor::setMusicVolumeHighORLow(bool high_low){
     if(high_low){
         mMusic.setVolume(100);
     } else {
         mMusic.setVolume(0);
     }
+}
+
+int UGSGameMajor::getErrorCount()
+{
+    return *tccErrorCount;
 }
 
 void UGSGameMajor::draw(sf::RenderWindow& window){
@@ -502,7 +521,7 @@ void UGSGameMajor::draw(sf::RenderWindow& window){
         int type        = mSequenceTilesInfo[mTilesDownCount].type;
         float duration  = mSequenceTilesInfo[mTilesDownCount].duration;
         float musicTime = mSequenceTilesInfo[mTilesDownCount].musicTime;
-        mTile.push_back(UGSTile(mPosX, mPosY, type, duration, mSpeed, musicTime, mTilesRes));
+        mTile.push_back(UGSTile(mPosX, mPosY, type, duration, mSpeed, musicTime, mTilesRes, tccErrorCount));
         mTilesDownCount++;
 
     }

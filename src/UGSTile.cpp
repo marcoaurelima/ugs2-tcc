@@ -17,9 +17,10 @@ UGSTile::UGSTile()
     //ctor
 }
 
-UGSTile::UGSTile(int posX, int posY, int type, float duration, float speed, float musicTime, TilesResources tilesRes) : mDuration(duration), mSpeed(speed), mMusicTime(musicTime), mPlayerError(false)
+UGSTile::UGSTile(int posX, int posY, int type, float duration, float speed, float musicTime, TilesResources tilesRes, int* tccErrorContRef) 
+: mDuration(duration), mSpeed(speed), mMusicTime(musicTime), mPlayerError(false), tccErrorContRef(tccErrorContRef) 
 {
-    /// Defini provisoriamente que a duração será em SEGUNDOS ///
+    /// Defini provisoriamente que a duraï¿½ï¿½o serï¿½ em SEGUNDOS ///
     /// O Speed deve estar no intervalo entre 4 - 11 ///
 
     mTile      = tilesRes.tileRes;
@@ -67,7 +68,7 @@ UGSTile::UGSTile(int posX, int posY, int type, float duration, float speed, floa
     if(mDuration > 0){
         mShineBody.setScale(1, duration * mSpeed);
     } else {
-        /// Proporcao do tile se for com duraçao 0;
+        /// Proporcao do tile se for com duraï¿½ao 0;
         mShineBody.setScale(1, 0.2);
         mShineBody.setColor(sf::Color::Transparent);
         mShineHead.setScale(1, 0.2);
@@ -82,9 +83,9 @@ UGSTile::UGSTile(int posX, int posY, int type, float duration, float speed, floa
 
     /// Resolvi declarar um sf::Music para o som de erro ao inves de sf::Sound
     /// Mas para funcionar, precisei instanciar um ponteiro, pois da forma
-    /// convencional dava erro de alocação ou algo do tipo.
-    /// Acho que isso se deve a alocação dinamica de tiles que eu estou fazendo em UGSGameMajor.
-    /// Curiosamente deu bug quando tentei destruir o ponteiro no destrutor. Então deixei o ponteiro solto.
+    /// convencional dava erro de alocaï¿½ï¿½o ou algo do tipo.
+    /// Acho que isso se deve a alocaï¿½ï¿½o dinamica de tiles que eu estou fazendo em UGSGameMajor.
+    /// Curiosamente deu bug quando tentei destruir o ponteiro no destrutor. Entï¿½o deixei o ponteiro solto.
     mSoundError = tilesRes.soundErrorRes;
     mSoundError->openFromFile("media/error.ogg");
     mSoundError->setVolume(15);
@@ -100,15 +101,17 @@ UGSTile::~UGSTile()
 }
 
 
+
 void UGSTile::draw(sf::RenderWindow& window, sf::Transform transform, int& errorControlRock, sf::Music& music){
     ///  ( int& errorControlRock ) serve apenas para decrementar o ROCK quando fizer o som de erro
 
-    ///Á partir de 570px o rastro apaga
+    ///ï¿½ partir de 570px o rastro apaga
     if(mTile.getPosition().y > 570 && !mPlayerError){
-        if(!mTileFinalized){ /// So irá fazer som de erro quando o tile estiver finalizado, com o rastro totalmente gasto
+        if(!mTileFinalized){ /// So irï¿½ fazer som de erro quando o tile estiver finalizado, com o rastro totalmente gasto
             mSoundError->play();
             errorControlRock--;
             music.setVolume(10);
+            *tccErrorContRef = *tccErrorContRef + 1;
         }
         eraseTrace();
         mPlayerError = !mPlayerError;
@@ -131,8 +134,8 @@ void UGSTile::draw(sf::RenderWindow& window, sf::Transform transform, int& error
 
 void UGSTile::wast(){
     ///Desgaste do rastro da nota
-    ///Como o numero de velocidades jogaveis é limitado (no momento 8 opçoes),
-    ///resolvi buscar constantes de calculo de proporção do rastro da nota ao
+    ///Como o numero de velocidades jogaveis ï¿½ limitado (no momento 8 opï¿½oes),
+    ///resolvi buscar constantes de calculo de proporï¿½ï¿½o do rastro da nota ao
     ///inves de uma formula que servisse a todos os inteiros colocados como speed nos parametros
 
 

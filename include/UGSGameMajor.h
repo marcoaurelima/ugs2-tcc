@@ -43,6 +43,9 @@ class UGSGameMajor : public UGSFunctions
         std::vector<float> tccGetDistances();
 
         void restart();
+        
+        void setPressedButton(bool pressed, int button);
+        int getErrorCount();
     protected:
 
     private:
@@ -98,8 +101,9 @@ class UGSGameMajor : public UGSFunctions
         void setMusicVolumeHighORLow(bool high_low);
         void startShineHit(int shineColor, bool isError);
 
-        std::vector<float> tccDistances;
         std::vector<bool> tccTeclas;
+        std::vector<float> tccDistances;
+        int* tccErrorCount;
 
         bool boolPlayControl = true;
         float floatPlayControlSync = 0;
