@@ -114,7 +114,7 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
     population.createInitialPopulation(5, 27);
     population.setNewGenerationParams(NewGenParams{
         SELECTION_TYPE::ROULLETE,
-        CROSSOVER_TYPE::SINGLE_POINT,
+        CROSSOVER_TYPE::UNIFORM,
         MUTATION_TYPE::INSERTION});
 
     // definição da topologia da rede neural
@@ -236,7 +236,7 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
     "Tempo(seg)   [" + std::to_string(timeNow) + "/" + std::to_string(timeTotal) + "]\n";
     ia_logs[6].setString(log);
 
-    const int MAX_ERRORS = 20;
+    const int MAX_ERRORS = 5;
     log = "Erros\n[" + std::to_string(mGameMajor->getErrorCount()) + "/" + std::to_string(MAX_ERRORS) + "]";
     ia_logs[7].setString(log);
     
@@ -256,8 +256,8 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
 
     if(mGameMajor->getErrorCount() > MAX_ERRORS)
     {
-        //engine.useNextTopology();
-        //restart();   
+        engine.useNextTopology();
+        restart();   
     }
 
 }
