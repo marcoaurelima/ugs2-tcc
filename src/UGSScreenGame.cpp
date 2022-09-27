@@ -249,13 +249,39 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
     float score = mGameMajor->getScore();
     std::vector<float> decision = engine.takeDecision({distance, score});
 
+    //log = "R. Neural\n[decisao]\n[verd|xx]\n[verm|  ]\n[amar|xx]\n[azul|  ]\n[lara|  ]";
+    log = "R. Neural\n[decisao]\n";
+   
     if (decision[0] > 0.8)
     {
         mGameMajor->setPressedButton(true, 0);
+        log += "[verd|xx]\n";
     } else 
     {
         mGameMajor->setPressedButton(false, 0);
+        log += "[verd|  ]\n";
     }
+
+    log += "[verm|  ]\n";
+    log += "[amar|  ]\n";
+    log += "[azul|  ]\n";
+    log += "[lara|  ]";
+    ia_logs[4].setString(log);
+    
+
+    log = "-------------------------------------------\n" 
+    "Alg.Gen  [geracao|" +
+    //"8"
+    std::to_string(engine.getCurrentChromossomeIndex()) + 
+    "] [cromossomo(" +
+    //"8"
+    std::to_string(engine.getCurrentGenerationIndex()) + 
+    "/" +
+    //"10"
+    std::to_string(engine.getCurrentGenerationSize()) + 
+    ")]\n"
+     "-------------------------------------------\n" ;
+    ia_logs[5].setString(log);
 
 
     if(mGameMajor->getErrorCount() > MAX_ERRORS)
