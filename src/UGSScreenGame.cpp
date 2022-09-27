@@ -239,7 +239,9 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
     "Tempo(seg)   [" + std::to_string(timeNow) + "/" + std::to_string(timeTotal) + "]\n";
     ia_logs[6].setString(log);
 
-    const int MAX_ERRORS = 2;
+    const int MAX_ERRORS = 1;
+
+
     log = "Erros\n[" + std::to_string(mGameMajor->getErrorCount()) + "/" + std::to_string(MAX_ERRORS) + "]";
     ia_logs[7].setString(log);
     
@@ -247,6 +249,7 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
     // Parte da tomada de decisão da rede neural
     float distance = distances[0];
     float score = mGameMajor->getScore();
+    //std::cout << "Score: " << score << " -- " << "distance: " << distance << std::endl;
     std::vector<float> decision = engine.takeDecision({distance, score});
 
     //log = "R. Neural\n[decisao]\n[verd|xx]\n[verm|  ]\n[amar|xx]\n[azul|  ]\n[lara|  ]";
@@ -286,9 +289,10 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
 
     if(mGameMajor->getErrorCount() > MAX_ERRORS)
     {
-        int randFitness = rand() % 99;
-        std::cout << "randFitness " << randFitness << std::endl; 
-        engine.setCurrentChromossomeFitness(randFitness);
+        int fitness = (int)((mGameMajor->getMusicTimeCurrent() / mGameMajor->getMusicTimeTotal()) * 10000); //rand() % 99;
+
+        std::cout << "fitness " << fitness << std::endl; 
+        engine.setCurrentChromossomeFitness(fitness);
         engine.useNextTopology();
         restart();   
     }
