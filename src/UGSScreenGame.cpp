@@ -111,11 +111,12 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
 
     // população inicial
     population = Population();
-    population.createInitialPopulation(5, 27);
+    population.enablePrintLogs(true);
+    population.createInitialPopulation(10, 27);
     population.setNewGenerationParams(NewGenParams{
         SELECTION_TYPE::ROULLETE,
         CROSSOVER_TYPE::UNIFORM,
-        MUTATION_TYPE::INSERTION});
+        MUTATION_TYPE::UNIFORM});
 
     // definição da topologia da rede neural
     network = NeuralNetwork();
@@ -125,6 +126,8 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
 
     engine = NeuroEvolutiveEngine(population, network);
     
+
+    srand(time(NULL));
 }
 
 UGSScreenGame::UGSScreenGame()
@@ -236,7 +239,7 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
     "Tempo(seg)   [" + std::to_string(timeNow) + "/" + std::to_string(timeTotal) + "]\n";
     ia_logs[6].setString(log);
 
-    const int MAX_ERRORS = 5;
+    const int MAX_ERRORS = 2;
     log = "Erros\n[" + std::to_string(mGameMajor->getErrorCount()) + "/" + std::to_string(MAX_ERRORS) + "]";
     ia_logs[7].setString(log);
     
@@ -254,8 +257,12 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
         mGameMajor->setPressedButton(false, 0);
     }
 
+
     if(mGameMajor->getErrorCount() > MAX_ERRORS)
     {
+        int randFitness = rand() % 99;
+        std::cout << "randFitness " << randFitness << std::endl; 
+        engine.setCurrentChromossomeFitness(randFitness);
         engine.useNextTopology();
         restart();   
     }

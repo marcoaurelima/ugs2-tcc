@@ -53,7 +53,7 @@ class UGSTile : public UGSFunctions
         sf::Sprite      mTile;      /// Pe�a que ir� descer
         sf::Sprite      mShineHead; /// Rastro da nota, quando ha dura��o maior dela
         sf::Sprite      mShineBody; /// Parte de cima do rastro; Cabe�a
-        sf::SoundBuffer mSoundBuffer;
+        //sf::SoundBuffer mSoundBuffer;
         //sf::Sound mSoundError;
         sf::Music* mSoundError;
         float mDuration;        /// Dura�ao do rastro

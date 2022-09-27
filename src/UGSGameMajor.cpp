@@ -211,8 +211,8 @@ void UGSGameMajor::stopAudio(){
     //mIntro.stop();
     mMusicBackground[0].stop();
     mMusicBackground[1].stop();
-    mMusicBackground[2].stop();
-    mMusicBackground[3].stop();
+    //mMusicBackground[2].stop();
+    //mMusicBackground[3].stop();
     mMusicBackgroundOgg.stop();
 }
 
@@ -547,7 +547,8 @@ void UGSGameMajor::draw(sf::RenderWindow& window){
         mMusicBackgroundOgg.play();
         mMusicBackground[0].play();
         mMusicBackground[1].play();
-        mMusicBackground[2].play();
+        //#TCC
+        //mMusicBackground[2].play();
 
         boolPlayControl = !boolPlayControl;
     }
