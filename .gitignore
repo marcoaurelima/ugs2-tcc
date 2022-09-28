@@ -1,5 +1,6 @@
 /bin
 /obj
 /songs
+/logs
 main.o
 ugs2-tcc.exe
