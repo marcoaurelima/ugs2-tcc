@@ -5,6 +5,7 @@
 #include <sstream>
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 #include "UGSNotasConsecutivas.h"
 #include "UGSRock.h"
 #include "UGSMusicPlayer.h"

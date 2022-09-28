@@ -71,7 +71,7 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
 
     mMusicPlayer = new UGSMusicPlayer(570, 118);
 
-    std::string logs = "------------------  status -----------------\n";
+    std::string logs = "------------------  status ------------------------\n";
     ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 17, sf::Color(255,255,255), logs));
     ia_logs[0].setPosition(sf::Vector2f(740,195));
 
@@ -101,7 +101,7 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
     logs = "                      "
     "Tempo(seg)   [12/323]\n";
     ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 17, sf::Color(255,255,0), logs));
-    ia_logs[6].setPosition(sf::Vector2f(740,450));
+    ia_logs[6].setPosition(sf::Vector2f(920,440));
 
     logs = "Erros\n[1/10]";
     ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 18, sf::Color(255,120,120), logs));
@@ -230,10 +230,13 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
     ss <<"]\n";
     ia_logs[1].setString(ss.str());
 
-    int timeNow = mGameMajor->getMusicTimeCurrent();
-    int timeTotal = mGameMajor->getMusicTimeTotal();
-    log = "                     "
-    "Tempo(seg)   [" + std::to_string(timeNow) + "/" + std::to_string(timeTotal) + "]\n";
+    float timeNow = mGameMajor->getMusicTimeCurrent();
+    float timeTotal = mGameMajor->getMusicTimeTotal();
+
+    std::stringstream ssLog;
+    ssLog << std::fixed << std::setprecision(2) << timeNow << " / " << timeTotal;
+
+    log = "                     \nTempo(seg)   [" + ssLog.str() + "]";
     ia_logs[6].setString(log);
 
     const int MAX_ERRORS = 1;
@@ -248,24 +251,24 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
     float score = mGameMajor->getScore();
     std::vector<float> decision = engine.takeDecision({distance, score});
 
-    log = "R. Neural\n[decisao]\n";
+    log = "R. Neural Saida\n---------------\n";
     if (decision[0] > 0.8)
     {
         mGameMajor->setPressedButton(true, 0);
-        log += "[verd|xx]\n";
     } else 
     {
         mGameMajor->setPressedButton(false, 0);
-        log += "[verd|  ]\n";
     }
+    
+    log += "[verd|" + std::to_string(decision[0]) + "]\n";
 
-    log += "[verm|  ]\n";
-    log += "[amar|  ]\n";
-    log += "[azul|  ]\n";
-    log += "[lara|  ]";
+    log += "[verm|        ]\n";
+    log += "[amar|        ]\n";
+    log += "[azul|        ]\n";
+    log += "[lara|        ]";
     ia_logs[4].setString(log);
     
-    log = "-------------------------------------------\n" 
+    log = "---------------------------------------------------\n" 
     "Alg.Gen  [geracao|" +
     std::to_string(engine.getCurrentChromossomeIndex()) + 
     "] [cromossomo(" +
@@ -273,7 +276,7 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
     "/" +
     std::to_string(engine.getCurrentGenerationSize()) + 
     ")]\n"
-     "-------------------------------------------\n" ;
+     "---------------------------------------------------\n" ;
     ia_logs[5].setString(log);
 
 
