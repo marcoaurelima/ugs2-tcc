@@ -289,6 +289,7 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
         // pular cromossomos que já tem fitness
         while(engine.currentChromossomeHaveFitness())
         { 
+            engine.saveCurrentChromossomeInFile();
             engine.useNextTopology(); 
         };
 
