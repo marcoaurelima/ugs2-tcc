@@ -16,6 +16,7 @@
 
 int main()
 {
+
     sf::RenderWindow window(sf::VideoMode(1368, 768), "UGS2 - Ultimate Guitar Show", sf::Style::Default);
     window.setVerticalSyncEnabled(true);
 

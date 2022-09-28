@@ -37,15 +37,16 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
     instrumentName   = gameInfo->instrumentName;
     velocity         = gameInfo->speed;
 
+/*
     std::cout << "\n\n";
     std::cout << musicPath << "   music path\n";
     std::cout << sequenceTilePath << "   sequ path\n";
     std::cout << userName << "   user\n";
     std::cout << instrumentName << "   instrument\n";
+*/
 
 
 
-    //mGameMajor = new UGSGameMajor(-500, 20, velocity, musicPath, sequenceTilePath, userName, instrumentName);
     mGameMajor = new UGSGameMajor(-500, 20, velocity, gameInfo->folderCode, musicPath, gameInfo->backgrounCodes, sequenceTilePath, userName, instrumentName);
     //#TCC
     //mGameMajor->stopAudio();
@@ -61,9 +62,7 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
     mRock = new UGSRock(560,570);
     mRock->setBandName(gameInfo->bandName);
     mRock->setMusicName(gameInfo->misicName);
-    //for(int i=0;i<100;i++){ /// COLOQUEI NO LACO FOR PRA EVITAR UM BUG. ELE SO INICIA CORRETAMENTE DEPOIS QUE SE COLOCA V�RIOS VALORES
     mRock->setRockStatus(50);
-    //}
 
     // ATEN��O: N�O PAGUE ESTE COMENT�RIO!!!
     // - Devido ao TCC, n�o usarei esse widget pois nao irei precisar dele.
@@ -111,7 +110,6 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
 
     // população inicial
     population = Population();
-    population.enablePrintLogs(true);
     population.createInitialPopulation(10, 27);
     population.setNewGenerationParams(NewGenParams{
         SELECTION_TYPE::ROULLETE,
@@ -126,7 +124,6 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
 
     engine = NeuroEvolutiveEngine(population, network);
     
-
     srand(time(NULL));
 }
 
@@ -249,12 +246,9 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
     // Parte da tomada de decisão da rede neural
     float distance = distances[0];
     float score = mGameMajor->getScore();
-    //std::cout << "Score: " << score << " -- " << "distance: " << distance << std::endl;
     std::vector<float> decision = engine.takeDecision({distance, score});
 
-    //log = "R. Neural\n[decisao]\n[verd|xx]\n[verm|  ]\n[amar|xx]\n[azul|  ]\n[lara|  ]";
     log = "R. Neural\n[decisao]\n";
-   
     if (decision[0] > 0.8)
     {
         mGameMajor->setPressedButton(true, 0);
@@ -271,16 +265,12 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
     log += "[lara|  ]";
     ia_logs[4].setString(log);
     
-
     log = "-------------------------------------------\n" 
     "Alg.Gen  [geracao|" +
-    //"8"
     std::to_string(engine.getCurrentChromossomeIndex()) + 
     "] [cromossomo(" +
-    //"8"
     std::to_string(engine.getCurrentGenerationIndex()) + 
     "/" +
-    //"10"
     std::to_string(engine.getCurrentGenerationSize()) + 
     ")]\n"
      "-------------------------------------------\n" ;
@@ -291,10 +281,15 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
     {
         int fitness = (int)((mGameMajor->getMusicTimeCurrent() / mGameMajor->getMusicTimeTotal()) * 10000); //rand() % 99;
 
-        std::cout << "fitness " << fitness << std::endl; 
         engine.setCurrentChromossomeFitness(fitness);
-        engine.useNextTopology();
-        restart();   
+
+        // pular cromossomos que já tem fitness
+        while(engine.currentChromossomeHaveFitness())
+        { 
+            engine.useNextTopology(); 
+        };
+
+        restart();  
     }
 
 }
