@@ -255,12 +255,13 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
     float score = mGameMajor->getScore();
     //TCC std::vector<float> decision = engine.takeDecision({distance, score});
 
+    log = "R. Neural Saida\n---------------\n";
     float time = mGameMajor->getCurrentTimeGame();
+
     float D = distance/100;
-    float T = time + (score);
+    float T = time + (score/10);
     std::vector<float> decision = engine.takeDecision({D, T});
 
-    log = "R. Neural Saida\n---------------\n";
     if (decision[0] > 0.8)
     {
         mGameMajor->setPressedButton(true, 0);
