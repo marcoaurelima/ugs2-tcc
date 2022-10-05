@@ -35,6 +35,9 @@ class UGSGameMajor : public UGSFunctions
         int   getTotalMusicNotes();
         float getMusicTimeTotal();
         float getMusicTimeCurrent();
+        
+        float getTotalTimeGame();
+        float getCurrentTimeGame();
 
         void stopAudio();
 

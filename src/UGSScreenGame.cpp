@@ -110,6 +110,7 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
 
     // população inicial
     population = Population();
+    ///population.enablePrintLogs();
     population.createInitialPopulation(10, 27);
     population.setNewGenerationParams(NewGenParams{
         SELECTION_TYPE::ROULLETE,
@@ -121,8 +122,9 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo* gameInfo){
     network.setInputLayer(InputLayerInfo(2));
     network.setHiddenLayer(HiddenLayerInfo({3, 3}, ACTFUNC::SIGMOID));
     network.setOutputLayer(OutputLayerInfo(1, ACTFUNC::SIGMOID));
-
+    ///network.show();
     engine = NeuroEvolutiveEngine(population, network);
+    engine.showInternalStatus();
     
     srand(time(NULL));
 }
@@ -247,9 +249,16 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
     
     //#TCC
     // Parte da tomada de decisão da rede neural
-    float distance = distances[0];
+    float distance = (distances[0] == -1) ? 572.0f : distances[0];
+    //std::cout << "Distance: " << distance << std::endl;
+
     float score = mGameMajor->getScore();
-    std::vector<float> decision = engine.takeDecision({distance, score});
+    //TCC std::vector<float> decision = engine.takeDecision({distance, score});
+
+    float time = mGameMajor->getCurrentTimeGame();
+    float D = distance/100;
+    float T = time + (score);
+    std::vector<float> decision = engine.takeDecision({D, T});
 
     log = "R. Neural Saida\n---------------\n";
     if (decision[0] > 0.8)
@@ -282,20 +291,41 @@ void UGSScreenGame::draw(sf::RenderWindow& window){
 
     if(mGameMajor->getErrorCount() > MAX_ERRORS)
     {
-        int fitness = (int)((mGameMajor->getMusicTimeCurrent() / mGameMajor->getMusicTimeTotal()) * 10000); //rand() % 99;
+        //int fitness = (int)((mGameMajor->getMusicTimeCurrent() / mGameMajor->getMusicTimeTotal()) * 10000); //rand() % 99;
+        //int fitness = mGameMajor->getScore();
 
+        // definição do fitness: ((P * 1) + (T * 2)) / 3
+        float P = mGameMajor->getScore();
+        //float T = (mGameMajor->getMusicTimeCurrent() / mGameMajor->getMusicTimeTotal()) * 10000;
+        float T = (mGameMajor->getCurrentTimeGame() / mGameMajor->getTotalTimeGame()) * 10000;
+        std::cout << "P " << P << std::endl;
+        std::cout << "T " << T << std::endl;
+
+        int fitness = ((P * 1) + (T * 2)) / 3;
+        std::cout << "fitness: " << fitness << std::endl;
         engine.setCurrentChromossomeFitness(fitness);
 
+        /*
         // pular cromossomos que já tem fitness
         while(engine.currentChromossomeHaveFitness())
         { 
             engine.saveCurrentChromossomeInFile();
             engine.useNextTopology(); 
         };
-
+        */
+        engine.saveCurrentChromossomeInFile();
+        engine.useNextTopology(); 
         restart();  
     }
+/*
+    std::cout << "********************************\n";
+    std::cout << "mGameMajor->getCurrentTimeGame(): " << mGameMajor->getCurrentTimeGame() << std::endl;
+    std::cout << "mGameMajor->getTotalTimeGame(): " << mGameMajor->getTotalTimeGame() << std::endl;
+    std::cout << "mGameMajor->getMusicTimeTotal(): " << mGameMajor->getMusicTimeTotal() << std::endl;
+    std::cout << "mGameMajor->getMusicTimeCurrent(): " << mGameMajor->getMusicTimeCurrent() << std::endl;
 
+    std::cout << "********************************\n";
+*/
 }
 
 bool UGSScreenGame::getPermissionToShow(){

@@ -669,7 +669,20 @@ int UGSGameMajor::getRock(){
     return mRock;
 }
 
+float UGSGameMajor::getTotalTimeGame()
+{
+    // o tempo do jogo começa antes da musica começar
 
+    // definir a diferença de tempo entre a fase e a musica 
+    float diff = mClock.getElapsedTime().asSeconds() - mMusic.getPlayingOffset().asSeconds();
+    //std::cout << "diff: " << diff << std::endl;
+    return mMusic.getDuration().asSeconds() + diff;
+}
+
+float UGSGameMajor::getCurrentTimeGame()
+{
+    return mClock.getElapsedTime().asSeconds();
+}
 
 
 
