@@ -106,15 +106,15 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo *gameInfo)
     ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 18, sf::Color(255, 120, 120), logs));
     ia_logs[7].setPosition(sf::Vector2f(910, 287));
 
-     logs = "Melhor Fitness: [12345|10000]\n"
+    logs = "Melhor Fitness: [12345|10000]\n"
            "---------------------------------------------------\n";
     ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 17, sf::Color(255, 255, 255), logs));
     ia_logs[8].setPosition(sf::Vector2f(740, 450));
 
     // população inicial
     population = Population();
-    /// population.enablePrintLogs();
-    population.createInitialPopulation(10, 27);
+    //population.enablePrintLogs();
+    population.createInitialPopulation(100, 27);
     population.setNewGenerationParams(NewGenParams{
         SELECTION_TYPE::ROULLETE,
         CROSSOVER_TYPE::UNIFORM,
@@ -127,7 +127,7 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo *gameInfo)
     network.setOutputLayer(OutputLayerInfo(1, ACTFUNC::SIGMOID));
     /// network.show();
     engine = NeuroEvolutiveEngine(population, network);
-    engine.showInternalStatus();
+    //engine.showInternalStatus();
 
     srand(time(NULL));
 }
@@ -274,8 +274,8 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
     ss << "]\n";
     ia_logs[1].setString(ss.str());
 
-    float timeNow = mGameMajor->getMusicTimeCurrent();
-    float timeTotal = mGameMajor->getMusicTimeTotal();
+    float timeNow = mGameMajor->getCurrentTimeGame();
+    float timeTotal = mGameMajor->getMusicTimeTotal() + 1;
 
     std::stringstream ssLog;
     ssLog << std::fixed << std::setprecision(2) << timeNow << " / " << timeTotal;
@@ -331,6 +331,10 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
           "---------------------------------------------------\n";
     ia_logs[5].setString(log);
 
+    log = "Melhor Fitness: [" + std::to_string(engine.getRecordFitness()) + "|10000] " + std::to_string(engine.getRecordFitness()/100000) +"%\n"
+          "---------------------------------------------------\n";
+    ia_logs[8].setString(log);
+
     if (mGameMajor->getErrorCount() > MAX_ERRORS)
     {
         // int fitness = (int)((mGameMajor->getMusicTimeCurrent() / mGameMajor->getMusicTimeTotal()) * 10000); //rand() % 99;
@@ -340,11 +344,11 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
         float P = mGameMajor->getScore();
         // float T = (mGameMajor->getMusicTimeCurrent() / mGameMajor->getMusicTimeTotal()) * 10000;
         float T = (mGameMajor->getCurrentTimeGame() / mGameMajor->getTotalTimeGame()) * 10000;
-        std::cout << "P " << P << std::endl;
-        std::cout << "T " << T << std::endl;
+        //std::cout << "P " << P << std::endl;
+        //std::cout << "T " << T << std::endl;
 
         int fitness = ((P * 1) + (T * 2)) / 3;
-        std::cout << "fitness: " << fitness << std::endl;
+        std::cout << "[F." << fitness << "] ";
 
         // pular cromossomos que já tem fitness
         if (engine.currentChromossomeHaveFitness())

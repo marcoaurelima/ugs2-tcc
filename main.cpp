@@ -19,6 +19,9 @@ int main()
 
     sf::RenderWindow window(sf::VideoMode(1368, 768), "UGS2 - Ultimate Guitar Show", sf::Style::Default);
     window.setVerticalSyncEnabled(true);
+    window.setPosition(sf::Vector2i(0, 0));
+
+    for(int i = 0; i < 40; i++){ puts("\n\n\n"); }
 
     sf::Texture textureClose;
     textureClose.loadFromFile("GUI/widgets/close.png");
