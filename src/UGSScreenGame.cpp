@@ -332,7 +332,7 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
     ia_logs[5].setString(log);
 
     char percent[10];
-    snprintf(percent, 10, "%.2f", ((float) engine.getRecordFitness()) / 1000.0);
+    snprintf(percent, 10, "%.2f", ((float) engine.getRecordFitness()) / 10000.0);
 
     log = "Melhor Fitness: [" + std::to_string(engine.getRecordFitness()) + "|10000] " + 
            percent +"%\n"
