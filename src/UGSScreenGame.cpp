@@ -117,7 +117,7 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo *gameInfo)
     population.createInitialPopulation(100, 27);
     population.setNewGenerationParams(NewGenParams{
         SELECTION_TYPE::ROULLETE,
-        CROSSOVER_TYPE::UNIFORM,
+        CROSSOVER_TYPE::SINGLE_POINT,
         MUTATION_TYPE::UNIFORM});
 
     // definição da topologia da rede neural
