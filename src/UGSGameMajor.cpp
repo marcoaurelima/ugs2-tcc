@@ -261,7 +261,8 @@ void UGSGameMajor::gameButtonsControl(){
         pressControlrestart = true;
     }
 
-    if(key_pressed(mKeyboardConfig[0]) || tccTeclas[0]){
+    if(tccTeclas[0]){
+    //if(key_pressed(mKeyboardConfig[0]) || tccTeclas[0]){
 
         mHole[0].setColor(sf::Color(0,255,0,255));
 
@@ -302,7 +303,8 @@ void UGSGameMajor::gameButtonsControl(){
 
 
 
-    if(key_pressed(mKeyboardConfig[1]) || tccTeclas[1]){
+    if(tccTeclas[1]){
+    //if(key_pressed(mKeyboardConfig[1]) || tccTeclas[1]){
         mHole[1].setColor(sf::Color(255,0,0,255));
 
         for(unsigned i=0;i<mTile.size();i++){
@@ -338,7 +340,8 @@ void UGSGameMajor::gameButtonsControl(){
         startShineHit(UGSColor::RED, true);
     }
 
-    if(key_pressed(mKeyboardConfig[2]) || key_pressed(mKeyboardConfig[3]) || tccTeclas[2]){
+    if(tccTeclas[2]){
+    //if(key_pressed(mKeyboardConfig[2]) || key_pressed(mKeyboardConfig[3]) || tccTeclas[2]){
         mHole[2].setColor(sf::Color(255,255,0,255));
 
         for(unsigned i=0;i<mTile.size();i++){
@@ -374,7 +377,8 @@ void UGSGameMajor::gameButtonsControl(){
         startShineHit(UGSColor::YELLOW, true);
     }
 
-    if(key_pressed(mKeyboardConfig[4]) || tccTeclas[3]){
+    if(tccTeclas[3]){
+    //if(key_pressed(mKeyboardConfig[4]) || tccTeclas[3]){
         mHole[3].setColor(sf::Color(0,0,255,255));
 
         for(unsigned i=0;i<mTile.size();i++){
@@ -410,7 +414,8 @@ void UGSGameMajor::gameButtonsControl(){
         startShineHit(UGSColor::BLUE, true);
     }
 
-    if(key_pressed(mKeyboardConfig[5]) || tccTeclas[4]){
+    if(tccTeclas[4]){
+    //if(key_pressed(mKeyboardConfig[5]) || tccTeclas[4]){
         mHole[4].setColor(sf::Color(255,112,0));
 
         for(unsigned i=0;i<mTile.size();i++){
