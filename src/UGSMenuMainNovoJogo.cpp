@@ -7,7 +7,7 @@ UGSMenuMainNovoJogo::UGSMenuMainNovoJogo()
     mTitle = UGSFunctions::create_SFsprite("GUI/menus/mainMenu/title.png");
     mTitle.setPosition(394,83);
 
-    /// Parte do código que procura as pastas das musicas// comeca de 1 e quando chega no numero de uma pasta que
+    /// Parte do cï¿½digo que procura as pastas das musicas// comeca de 1 e quando chega no numero de uma pasta que
     /// nao existe ele retorna null e sai do loop infinito
     int index = 0;
     int three = 0; /// conta de 3 em 3 // representa cada linha de cards
@@ -69,7 +69,7 @@ void UGSMenuMainNovoJogo::draw(sf::RenderWindow& window){
         }
     }
 
-    /// esta parte garante que haverá apenas 1 alocação de UGSMenuMainNovoJogoStep2 e que será desenhado somente ele
+    /// esta parte garante que haverï¿½ apenas 1 alocaï¿½ï¿½o de UGSMenuMainNovoJogoStep2 e que serï¿½ desenhado somente ele
     if(wasChose){
         if(wasChooseControl){
             mMenuStep2 = new UGSMenuMainNovoJogoStep2(mMenuCards[indexChoose]->getDetails());
@@ -97,7 +97,7 @@ void UGSMenuMainNovoJogo::draw(sf::RenderWindow& window){
             }
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
-            window.close();
+            //window.close();
         }
     }
 

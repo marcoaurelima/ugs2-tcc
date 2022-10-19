@@ -60,7 +60,7 @@ int main()
         if(functions.mouseColision(spriteClose, window)){
             spriteClose.setColor(sf::Color(255,255,255,255));
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
-                window.close();
+                //window.close();
             }
         } else {
             spriteClose.setColor(sf::Color(255,255,255,120));
