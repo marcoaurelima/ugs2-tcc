@@ -114,7 +114,7 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo *gameInfo)
     // população inicial
     population = Population();
     //population.enablePrintLogs();
-    population.createInitialPopulation(100, 27);
+    population.createInitialPopulation(100, 44);
     population.setNewGenerationParams(NewGenParams{
         SELECTION_TYPE::ROULLETE,
         CROSSOVER_TYPE::UNIFORM,
@@ -122,8 +122,8 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo *gameInfo)
 
     // definição da topologia da rede neural
     network = NeuralNetwork();
-    network.setInputLayer(InputLayerInfo(2));
-    network.setHiddenLayer(HiddenLayerInfo({3, 3}, ACTFUNC::SIGMOID));
+    network.setInputLayer(InputLayerInfo(3));
+    network.setHiddenLayer(HiddenLayerInfo({4, 4}, ACTFUNC::SIGMOID));
     network.setOutputLayer(OutputLayerInfo(1, ACTFUNC::SIGMOID));
     /// network.show();
     engine = NeuroEvolutiveEngine(population, network);
@@ -216,7 +216,7 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
     }
 
     // TCC - atualização do status
-    std::string log = "Pontos\n[" + (std::to_string(mGameMajor->getScore()) + "]\n");
+    std::string log = "Pontos\n[" + (std::to_string(mGameMajor->getErrorCount() != 0 ? 0 : mGameMajor->getScore()) + "]\n");
     ia_logs[2].setString(log);
 
     log = "N. Cons\n[" + std::to_string(mGameMajor->getConsecutiveNotesNow()) + "]";
@@ -299,9 +299,18 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
     log = "R. Neural Saida\n---------------\n";
     float time = mGameMajor->getCurrentTimeGame();
 
+/*
     float D = distance / 100;
-    float T = time + (score / 10);
-    std::vector<float> decision = engine.takeDecision({D, T});
+    float T = time;
+    float S = (score / 10);
+    */
+    float D = distance / 100;
+    float T = time;
+    float S = mGameMajor->getErrorCount() != 0 ? 0 : score;
+
+    //std::cout << " Score: " << S;
+
+    std::vector<float> decision = engine.takeDecision({D, T, S});
 
     if (decision[0] > 0.8)
     {
@@ -351,7 +360,7 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
         //std::cout << "P " << P << std::endl;
         //std::cout << "T " << T << std::endl;
 
-        int fitness = ((P * 1) + (T * 2)) / 3;
+        int fitness = (((P * 1) + (T * 2)) + S) / 4;
         std::cout << "[F." << fitness << "] ";
 
         // pular cromossomos que já tem fitness
