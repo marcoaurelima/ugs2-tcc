@@ -354,14 +354,18 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
         // int fitness = mGameMajor->getScore();
 
         // definição do fitness: ((P * 1) + (T * 2)) / 3
-        float P = mGameMajor->getScore();
+        float maxPointsGame = 12222;
+        float P = (S / maxPointsGame) * 10000;
         // float T = (mGameMajor->getMusicTimeCurrent() / mGameMajor->getMusicTimeTotal()) * 10000;
         float T = (mGameMajor->getCurrentTimeGame() / mGameMajor->getTotalTimeGame()) * 10000;
         //std::cout << "P " << P << std::endl;
         //std::cout << "T " << T << std::endl;
 
-        int fitness = (((P * 1) + (T * 2)) + S) / 4;
-        std::cout << "[F." << fitness << "] ";
+        // fitness = media das duas porcentagens (pontos e )
+        int fitness = (2*P + T) / 3;
+        //int fitness = (((P * 1) + (T * 2)) + S) / 4;
+        std::cout << "f[" << fitness << "]\t";
+        //std::cout << "[F." << fitness << "] ";
 
         // pular cromossomos que já tem fitness
         if (engine.currentChromossomeHaveFitness())
