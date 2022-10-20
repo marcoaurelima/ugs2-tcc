@@ -361,8 +361,10 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
         //std::cout << "P " << P << std::endl;
         //std::cout << "T " << T << std::endl;
 
+        float NC = mGameMajor->getConsecutiveNotesNow();
+
         // fitness = media das duas porcentagens (pontos e )
-        int fitness = (2*P + T) / 3;
+        int fitness = ((2*P + T) + (NC * 10)) / 3;
         //int fitness = (((P * 1) + (T * 2)) + S) / 4;
         std::cout << "f[" << fitness << "]\t";
         //std::cout << "[F." << fitness << "] ";

@@ -48,11 +48,11 @@ int main()
     sf::Event event;
     while (window.isOpen()){
         while (window.pollEvent(event)){
-            if (event.type == sf::Event::Closed)
-                window.close();
+            if (event.type == sf::Event::Closed){}
+                //window.close();
 
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-            window.close();
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){}
+            //window.close();
         }
         window.clear();
         gameTst.draw(window);

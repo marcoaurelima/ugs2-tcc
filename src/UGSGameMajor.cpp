@@ -179,13 +179,15 @@ void UGSGameMajor::restart()
     mTile.clear();
     mClock.restart();
 
+    //TCC não reiniciar a música durante os testes para evitar bug do offset da musica.
+    /*
     mMusic.stop();
     mMusicBackgroundOgg.stop();
     for(unsigned int i = 0; i < 4;i++)
     {
         mMusicBackground[i].stop();
     }
-
+    */
     //mIntro.stop();
 
     floatPlayControlSync = 0;
@@ -548,10 +550,12 @@ void UGSGameMajor::draw(sf::RenderWindow& window){
     
 
     if(mClock.getElapsedTime().asSeconds() > floatPlayControlSync && boolPlayControl){
+        //#TCC evitar que a musica recomece
+        /*
         mMusic.play();
         mMusicBackgroundOgg.play();
         mMusicBackground[0].play();
-        mMusicBackground[1].play();
+        mMusicBackground[1].play();*/
         //#TCC
         //mMusicBackground[2].play();
 
