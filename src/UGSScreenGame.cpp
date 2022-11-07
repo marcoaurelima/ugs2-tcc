@@ -328,9 +328,9 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
 
     log = "---------------------------------------------------\n"
           "Alg.Gen  [geracao|" +
-          std::to_string(network.getCurrentChromossomeID()) +
-          "] [cromossomo(" +
           std::to_string(network.getCurrentGenerationID()) +
+          "] [cromossomo(" +
+          std::to_string(network.getCurrentChromossomeID()) +
           "/" +
           std::to_string(network.getCurrentGenerationSIZE()) +
           ")]\n"
