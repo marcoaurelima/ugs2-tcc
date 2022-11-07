@@ -111,23 +111,20 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo *gameInfo)
     ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 17, sf::Color(255, 255, 255), logs));
     ia_logs[8].setPosition(sf::Vector2f(740, 450));
 
-    // população inicial
-    population = Population();
-    //population.enablePrintLogs();
-    population.createInitialPopulation(100, 44);
-    population.setNewGenerationParams(NewGenParams{
-        SELECTION_TYPE::ROULLETE,
-        CROSSOVER_TYPE::UNIFORM,
-        MUTATION_TYPE::UNIFORM});
-
     // definição da topologia da rede neural
     network = NeuralNetwork();
     network.setInputLayer(InputLayerInfo(3));
     network.setHiddenLayer(HiddenLayerInfo({4, 4}, ACTFUNC::SIGMOID));
     network.setOutputLayer(OutputLayerInfo(1, ACTFUNC::SIGMOID));
-    /// network.show();
-    engine = NeuroEvolutiveEngine(population, network);
-    //engine.showInternalStatus();
+    network.setServerAddress("localhost", 45001);
+
+    ServerRequest request;
+        request.generationID = -1;
+        request.chromossomeID = -1;
+        request.fitnessValue = -1;
+
+    network.getNewChromossomeFromServer(request);
+
 
     srand(time(NULL));
 }
@@ -299,18 +296,18 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
     log = "R. Neural Saida\n---------------\n";
     float time = mGameMajor->getCurrentTimeGame();
 
-/*
-    float D = distance / 100;
-    float T = time;
-    float S = (score / 10);
-    */
+    /*
+        float D = distance / 100;
+        float T = time;
+        float S = (score / 10);
+        */
     float D = distance / 100;
     float T = time;
     float S = mGameMajor->getErrorCount() != 0 ? 0 : score;
 
-    //std::cout << " Score: " << S;
+    // std::cout << " Score: " << S;
 
-    std::vector<float> decision = engine.takeDecision({D, T, S});
+    std::vector<float> decision = network.takeDecision({D, T, S});
 
     if (decision[0] > 0.8)
     {
@@ -331,69 +328,46 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
 
     log = "---------------------------------------------------\n"
           "Alg.Gen  [geracao|" +
-          std::to_string(engine.getCurrentChromossomeIndex()) +
+          std::to_string(network.getCurrentChromossomeID()) +
           "] [cromossomo(" +
-          std::to_string(engine.getCurrentGenerationIndex()) +
+          std::to_string(network.getCurrentGenerationID()) +
           "/" +
-          std::to_string(engine.getCurrentGenerationSize()) +
+          std::to_string(network.getCurrentGenerationSIZE()) +
           ")]\n"
           "---------------------------------------------------\n";
     ia_logs[5].setString(log);
 
     char percent[10];
-    snprintf(percent, 10, "%.2f", ((float) engine.getRecordFitness()) / 10000.0);
+    snprintf(percent, 10, "%.2f", ((float)fitnessRecord) / 10000.0);
 
-    log = "Melhor Fitness: [" + std::to_string(engine.getRecordFitness()) + "|10000] " + 
-           percent +"%\n"
-          "---------------------------------------------------\n";
+    log = "Melhor Fitness: [" + std::to_string(fitnessRecord) + "|10000] " +
+          percent + "%\n"
+                    "---------------------------------------------------\n";
     ia_logs[8].setString(log);
 
     if (mGameMajor->getErrorCount() > MAX_ERRORS)
     {
-        // int fitness = (int)((mGameMajor->getMusicTimeCurrent() / mGameMajor->getMusicTimeTotal()) * 10000); //rand() % 99;
-        // int fitness = mGameMajor->getScore();
 
-        // definição do fitness: ((P * 1) + (T * 2)) / 3
         float maxPointsGame = 12222;
         float P = (S / maxPointsGame) * 10000;
-        // float T = (mGameMajor->getMusicTimeCurrent() / mGameMajor->getMusicTimeTotal()) * 10000;
         float T = (mGameMajor->getCurrentTimeGame() / mGameMajor->getTotalTimeGame()) * 10000;
-        //std::cout << "P " << P << std::endl;
-        //std::cout << "T " << T << std::endl;
 
         float NC = mGameMajor->getConsecutiveNotesNow();
 
-        // fitness = media das duas porcentagens (pontos e )
-        int fitness = ((2*P + T) + (NC * 10)) / 3;
-        //int fitness = (((P * 1) + (T * 2)) + S) / 4;
-        std::cout << "f[" << fitness << "]\t";
-        //std::cout << "[F." << fitness << "] ";
+        sf::Int32 fitness = ((2 * P + T) + (NC * 10)) / 3;
+        std::cout << "Fitness: [" << fitness << "]\n\n";
 
-        // pular cromossomos que já tem fitness
-        if (engine.currentChromossomeHaveFitness())
-        {
-            while (engine.currentChromossomeHaveFitness())
-            {
-                engine.saveCurrentChromossomeInFile();
-                engine.useNextTopology();
-            };
-        }
+        if(fitness > fitnessRecord){ fitnessRecord = fitness; }  
 
-        engine.setCurrentChromossomeFitness(fitness);
+        ServerRequest request;
+        request.generationID = network.getCurrentGenerationID();
+        request.chromossomeID = network.getCurrentChromossomeID();
+        request.fitnessValue = fitness;
 
-        engine.saveCurrentChromossomeInFile();
-        engine.useNextTopology();
+        network.getNewChromossomeFromServer(request);
+
         restart();
     }
-    /*
-        std::cout << "********************************\n";
-        std::cout << "mGameMajor->getCurrentTimeGame(): " << mGameMajor->getCurrentTimeGame() << std::endl;
-        std::cout << "mGameMajor->getTotalTimeGame(): " << mGameMajor->getTotalTimeGame() << std::endl;
-        std::cout << "mGameMajor->getMusicTimeTotal(): " << mGameMajor->getMusicTimeTotal() << std::endl;
-        std::cout << "mGameMajor->getMusicTimeCurrent(): " << mGameMajor->getMusicTimeCurrent() << std::endl;
-
-        std::cout << "********************************\n";
-    */
 }
 
 bool UGSScreenGame::getPermissionToShow()
