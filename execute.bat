@@ -1,0 +1,1 @@
+for /l %%x in (1, 1, 3) do timeout /T 1 && start "cmd" "ugs2-tcc.exe"

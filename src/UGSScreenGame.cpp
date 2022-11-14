@@ -116,7 +116,7 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo *gameInfo)
     network.setInputLayer(InputLayerInfo(3));
     network.setHiddenLayer(HiddenLayerInfo({4, 4}, ACTFUNC::SIGMOID));
     network.setOutputLayer(OutputLayerInfo(1, ACTFUNC::SIGMOID));
-    network.setServerAddress("localhost", 45001);
+    network.setServerAddress("192.168.1.105", 45001);
 
     ServerRequest request;
         request.generationID = -1;
@@ -300,7 +300,7 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
         float D = distance / 100;
         float T = time;
         float S = (score / 10);
-        */
+    */
     float D = distance / 100;
     float T = time;
     float S = mGameMajor->getErrorCount() != 0 ? 0 : score;
