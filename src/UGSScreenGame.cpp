@@ -116,15 +116,15 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo *gameInfo)
     network.setInputLayer(InputLayerInfo(3));
     network.setHiddenLayer(HiddenLayerInfo({4, 4}, ACTFUNC::SIGMOID));
     network.setOutputLayer(OutputLayerInfo(1, ACTFUNC::SIGMOID));
-    network.setServerAddress("192.168.1.105", 45001);
+    network.setServerAddress("192.168.100.97", 45001);
+    network.connectToServer();
 
     ServerRequest request;
-        request.generationID = -1;
-        request.chromossomeID = -1;
-        request.fitnessValue = -1;
+    request.generationID = -1;
+    request.chromossomeID = -1;
+    request.fitnessValue = -1;
 
     network.getNewChromossomeFromServer(request);
-
 
     srand(time(NULL));
 }
@@ -357,7 +357,10 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
         sf::Int32 fitness = ((2 * P + T) + (NC * 10)) / 3;
         std::cout << "Fitness: [" << fitness << "]\n\n";
 
-        if(fitness > fitnessRecord){ fitnessRecord = fitness; }  
+        if (fitness > fitnessRecord)
+        {
+            fitnessRecord = fitness;
+        }
 
         ServerRequest request;
         request.generationID = network.getCurrentGenerationID();
