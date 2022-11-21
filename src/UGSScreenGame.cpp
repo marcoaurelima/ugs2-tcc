@@ -116,7 +116,7 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo *gameInfo)
     network.setInputLayer(InputLayerInfo(3));
     network.setHiddenLayer(HiddenLayerInfo({4, 4}, ACTFUNC::SIGMOID));
     network.setOutputLayer(OutputLayerInfo(1, ACTFUNC::SIGMOID));
-    network.setServerAddress("192.168.0.5", 45001);
+    network.setServerAddress("localhost", 45001);
     network.connectToServer();
 
     ServerRequest request;
