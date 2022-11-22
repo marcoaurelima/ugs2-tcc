@@ -213,7 +213,7 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
     }
 
     // TCC - atualização do status
-    std::string log = "Pontos\n[" + (std::to_string(mGameMajor->getErrorCount() != 0 ? 0 : mGameMajor->getScore()) + "]\n");
+    std::string log = "Pontos\n[" + (std::to_string(mGameMajor->getErrorCount() == 0 ? mGameMajor->getScore() : 0) + "]\n");
     ia_logs[2].setString(log);
 
     log = "N. Cons\n[" + std::to_string(mGameMajor->getConsecutiveNotesNow()) + "]";
@@ -303,7 +303,7 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
     */
     float D = distance / 100;
     float T = time;
-    float S = mGameMajor->getErrorCount() != 0 ? 0 : score;
+    float S = mGameMajor->getErrorCount() == 0 ? score : 0;
 
     // std::cout << " Score: " << S;
 
@@ -354,7 +354,8 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
 
         float NC = mGameMajor->getConsecutiveNotesNow();
 
-        sf::Int32 fitness = ((2 * P + T) + (NC * 10)) / 3;
+        //sf::Int32 fitness = ((2 * P + T) + (NC * 10)) / 3;
+        sf::Int32 fitness = ((10 * P) + T + (NC * 10)) / 3;
         std::cout << "Fitness: [" << fitness << "]\n\n";
 
         if (fitness > fitnessRecord)
