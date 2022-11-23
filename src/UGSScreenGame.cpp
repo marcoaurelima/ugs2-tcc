@@ -354,8 +354,10 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
 
         float NC = mGameMajor->getConsecutiveNotesNow();
 
+        std::cout << "P: " << P << "  T: " << T << "  NC: " << NC << std::endl;
+        
         //sf::Int32 fitness = ((2 * P + T) + (NC * 10)) / 3;
-        sf::Int32 fitness = ((10 * P) + T + (NC * 30)) / 3;
+        sf::Int32 fitness = ((30 * P) + T + (NC * 5)) / 3;
         std::cout << "Fitness: [" << fitness << "]\n\n";
 
         if (fitness > fitnessRecord)
