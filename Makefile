@@ -34,7 +34,7 @@ OBJS =  $(OBJ)/main.o \
 		$(OBJ)/NeuroEvolutiveEngine.o 
 
 all: $(OBJS) 
-	g++.exe -L $(LIB) -o ugs2-tcc.exe $(OBJS) -s $(SFML) $(DEPEND)
+	C:/Program Files/CodeBlocks/MinGW/bin/g++.exe -L $(LIB) -o ugs2-tcc.exe $(OBJS) -s $(SFML) $(DEPEND)
 	ugs2-tcc.exe
 
 $(OBJ)/main.o: main.cpp

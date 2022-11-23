@@ -113,7 +113,7 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo *gameInfo)
 
     // definição da topologia da rede neural
     network = NeuralNetwork();
-    network.setInputLayer(InputLayerInfo(3));
+    network.setInputLayer(InputLayerInfo(2));
     network.setHiddenLayer(HiddenLayerInfo({4, 4}, ACTFUNC::SIGMOID));
     network.setOutputLayer(OutputLayerInfo(1, ACTFUNC::SIGMOID));
     network.setServerAddress("localhost", 45001);
@@ -352,12 +352,12 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
         float P = (S / maxPointsGame) * 10000;
         float T = (mGameMajor->getCurrentTimeGame() / mGameMajor->getTotalTimeGame()) * 10000;
 
-        float NC = mGameMajor->getConsecutiveNotesNow();
+        //float NC = mGameMajor->getConsecutiveNotesNow();
 
-        std::cout << "P: " << P << "  T: " << T << "  NC: " << NC << std::endl;
+        std::cout << "P: " << P << "  T: " << T << std::endl;
         
         //sf::Int32 fitness = ((2 * P + T) + (NC * 10)) / 3;
-        sf::Int32 fitness = ((30 * P) + T + (NC * 5)) / 3;
+        sf::Int32 fitness = ((30 * P) + T) / 2;
         std::cout << "Fitness: [" << fitness << "]\n\n";
 
         if (fitness > fitnessRecord)
