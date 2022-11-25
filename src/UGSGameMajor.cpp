@@ -550,12 +550,11 @@ void UGSGameMajor::draw(sf::RenderWindow& window){
     
 
     if(mClock.getElapsedTime().asSeconds() > floatPlayControlSync && boolPlayControl){
-        //#TCC evitar que a musica recomece
-        /*
+        
         mMusic.play();
         mMusicBackgroundOgg.play();
         mMusicBackground[0].play();
-        mMusicBackground[1].play();*/
+        mMusicBackground[1].play();
         //#TCC
         //mMusicBackground[2].play();
 
