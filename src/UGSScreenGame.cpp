@@ -91,9 +91,7 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo *gameInfo)
     ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 20, sf::Color(255, 255, 255), logs));
     ia_logs[4].setPosition(sf::Vector2f(1030, 225));
 
-    logs = "-------------------------------------------\n"
-           "Alg. Gen   [geracao|8]   [cromossomo(8/10)]\n"
-           "-------------------------------------------\n";
+    logs = "";
     ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 17, sf::Color(255, 255, 255), logs));
     ia_logs[5].setPosition(sf::Vector2f(740, 390));
 
@@ -106,26 +104,47 @@ UGSScreenGame::UGSScreenGame(Game1playerInfo *gameInfo)
     ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 18, sf::Color(255, 120, 120), logs));
     ia_logs[7].setPosition(sf::Vector2f(910, 287));
 
-    logs = "Melhor Fitness: [12345|10000]\n"
-           "---------------------------------------------------\n";
+    logs = "";
     ia_logs.push_back(create_SFtext("c:/windows/fonts/consola.ttf", 17, sf::Color(255, 255, 255), logs));
     ia_logs[8].setPosition(sf::Vector2f(740, 450));
 
     // definição da topologia da rede neural
-    network = NeuralNetwork();
-    network.setInputLayer(InputLayerInfo(3));
-    network.setHiddenLayer(HiddenLayerInfo({4, 4}, ACTFUNC::SIGMOID));
-    network.setOutputLayer(OutputLayerInfo(1, ACTFUNC::SIGMOID));
-    network.setServerAddress("localhost", 45001);
-    network.connectToServer();
+    network_green = NeuralNetwork();
+    network_green.setInputLayer(InputLayerInfo(3));
+    network_green.setHiddenLayer(HiddenLayerInfo({4, 4}, ACTFUNC::SIGMOID));
+    network_green.setOutputLayer(OutputLayerInfo(1, ACTFUNC::SIGMOID));
+    
+    network_red = NeuralNetwork();
+    network_red.setInputLayer(InputLayerInfo(3));
+    network_red.setHiddenLayer(HiddenLayerInfo({4, 4}, ACTFUNC::SIGMOID));
+    network_red.setOutputLayer(OutputLayerInfo(1, ACTFUNC::SIGMOID));
+    
+    network_yellow = NeuralNetwork();
+    network_yellow.setInputLayer(InputLayerInfo(3));
+    network_yellow.setHiddenLayer(HiddenLayerInfo({4, 4}, ACTFUNC::SIGMOID));
+    network_yellow.setOutputLayer(OutputLayerInfo(1, ACTFUNC::SIGMOID));
+    
+    network_blue = NeuralNetwork();
+    network_blue.setInputLayer(InputLayerInfo(3));
+    network_blue.setHiddenLayer(HiddenLayerInfo({4, 4}, ACTFUNC::SIGMOID));
+    network_blue.setOutputLayer(OutputLayerInfo(1, ACTFUNC::SIGMOID));
+    
+    network_orange = NeuralNetwork();
+    network_orange.setInputLayer(InputLayerInfo(3));
+    network_orange.setHiddenLayer(HiddenLayerInfo({4, 4}, ACTFUNC::SIGMOID));
+    network_orange.setOutputLayer(OutputLayerInfo(1, ACTFUNC::SIGMOID));
+    
+    Chromosome chromossome{0.13, 0.986, 0.803, 0.945, 0.253, 0.331, 0.024, 0.002, 0.014, 0.007, 0.01,
+                           0.048, 0.224, 0.083, 0.192, 0.218, 0.017, 0.281, 0.072, 0.035, 0.297, 0.345,
+                           0.164, 0.269, 0.555, 0.043, 0.025, 0.015, 0.053, 0.33, 0.029, 0.007, 0.243,
+                           0.064, 0.006, 0.089, 0.298, 0.04, 0.13, 0.135, 0.322, 0.299, 0.345, 0.095};
 
-    ServerRequest request;
-    request.generationID = -1;
-    request.chromossomeID = -1;
-    request.fitnessValue = -1;
-
-    network.getNewChromossomeFromServer(request);
-
+    network_green.loadDataFromChromosome(chromossome);
+    network_red.loadDataFromChromosome(chromossome);
+    network_yellow.loadDataFromChromosome(chromossome);
+    network_blue.loadDataFromChromosome(chromossome);
+    network_orange.loadDataFromChromosome(chromossome);
+    
     srand(time(NULL));
 }
 
@@ -307,7 +326,7 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
 
     // std::cout << " Score: " << S;
 
-    std::vector<float> decision = network.takeDecision({D, T, S});
+    std::vector<float> decision = network_green.takeDecision({D, T, S});
 
     if (decision[0] > 0.8)
     {
@@ -326,53 +345,18 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
     log += "[lara|        ]";
     ia_logs[4].setString(log);
 
-    log = "---------------------------------------------------\n"
-          "Alg.Gen  [geracao|" +
-          std::to_string(network.getCurrentGenerationID()) +
-          "] [cromossomo(" +
-          std::to_string(network.getCurrentChromossomeID()) +
-          "/" +
-          std::to_string(network.getCurrentGenerationSIZE()) +
-          ")]\n"
-          "---------------------------------------------------\n";
+    log = "---------------------------------------------------\n";
     ia_logs[5].setString(log);
 
     char percent[10];
     snprintf(percent, 10, "%.2f", ((float)fitnessRecord) / 10000.0);
 
-    log = "Melhor Fitness: [" + std::to_string(fitnessRecord) + "|10000] " +
-          percent + "%\n"
-                    "---------------------------------------------------\n";
+    log = "";
     ia_logs[8].setString(log);
 
     if (mGameMajor->getErrorCount() > MAX_ERRORS)
     {
-
-        float maxPointsGame = 12222;
-        float P = (S / maxPointsGame) * 10000;
-        float T = (mGameMajor->getCurrentTimeGame() / mGameMajor->getTotalTimeGame()) * 10000;
-
-        float NC = mGameMajor->getConsecutiveNotesNow();
-
-        std::cout << "P: " << P << "  T: " << T << "  NC: " << NC << std::endl;
-        
-        //sf::Int32 fitness = ((2 * P + T) + (NC * 10)) / 3;
-        sf::Int32 fitness = ((30 * P) + T + (NC * 5)) / 3;
-        std::cout << "Fitness: [" << fitness << "]\n\n";
-
-        if (fitness > fitnessRecord)
-        {
-            fitnessRecord = fitness;
-        }
-
-        ServerRequest request;
-        request.generationID = network.getCurrentGenerationID();
-        request.chromossomeID = network.getCurrentChromossomeID();
-        request.fitnessValue = fitness;
-
-        network.getNewChromossomeFromServer(request);
-
-        restart();
+        //exit(0);
     }
 }
 

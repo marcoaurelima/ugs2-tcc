@@ -47,7 +47,11 @@ class UGSScreenGame : public UGSFunctions
 
         std::vector<sf::Text> ia_logs;
 
-        NeuralNetwork network;
+        NeuralNetwork network_green;
+        NeuralNetwork network_red;
+        NeuralNetwork network_yellow;
+        NeuralNetwork network_blue;
+        NeuralNetwork network_orange;
 
         int fitnessRecord {};
         
