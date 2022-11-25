@@ -306,8 +306,12 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
 
     //#TCC
     // Parte da tomada de decisão da rede neural
-    float distance = (distances[0] == -1) ? 572.0f : distances[0];
-    // std::cout << "Distance: " << distance << std::endl;
+    float distance_green = (distances[0] == -1) ? 572.0f : distances[0];
+    float distance_red = (distances[1] == -1) ? 572.0f : distances[1];
+    float distance_yellow = (distances[2] == -1) ? 572.0f : distances[2];
+    float distance_blue = (distances[3] == -1) ? 572.0f : distances[3];
+    float distance_orange = (distances[4] == -1) ? 572.0f : distances[4];
+
 
     float score = mGameMajor->getScore();
     // TCC std::vector<float> decision = engine.takeDecision({distance, score});
@@ -315,20 +319,25 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
     log = "R. Neural Saida\n---------------\n";
     float time = mGameMajor->getCurrentTimeGame();
 
-    /*
-        float D = distance / 100;
-        float T = time;
-        float S = (score / 10);
-    */
-    float D = distance / 100;
+
+    float D_green = distance_green / 100;
+    float D_red = distance_red / 100;
+    float D_yellow = distance_yellow / 100;
+    float D_blue = distance_blue / 100;
+    float D_orange = distance_orange / 100;
+
     float T = time;
     float S = mGameMajor->getErrorCount() == 0 ? score : 0;
 
     // std::cout << " Score: " << S;
 
-    std::vector<float> decision = network_green.takeDecision({D, T, S});
+    std::vector<float> decision_green = network_green.takeDecision({D_green, T, S});
+    std::vector<float> decision_red = network_red.takeDecision({D_red, T, S});
+    std::vector<float> decision_yellow = network_yellow.takeDecision({D_yellow, T, S});
+    std::vector<float> decision_blue = network_blue.takeDecision({D_blue, T, S});
+    std::vector<float> decision_orange = network_orange.takeDecision({D_orange, T, S});
 
-    if (decision[0] > 0.8)
+    if (decision_green[0] > 0.8)
     {
         mGameMajor->setPressedButton(true, 0);
     }
@@ -337,20 +346,58 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
         mGameMajor->setPressedButton(false, 0);
     }
 
-    log += "[verd|" + std::to_string(decision[0]) + "]\n";
+    if (decision_red[0] > 0.8)
+    {
+        mGameMajor->setPressedButton(true, 1);
+    }
+    else
+    {
+        mGameMajor->setPressedButton(false, 1);
+    }
 
-    log += "[verm|        ]\n";
+    if (decision_yellow[0] > 0.8)
+    {
+        mGameMajor->setPressedButton(true, 2);
+    }
+    else
+    {
+        mGameMajor->setPressedButton(false, 2);
+    }
+
+    if (decision_blue[0] > 0.8)
+    {
+        mGameMajor->setPressedButton(true, 3);
+    }
+    else
+    {
+        mGameMajor->setPressedButton(false, 3);
+    }
+
+    if (decision_orange[0] > 0.8)
+    {
+        mGameMajor->setPressedButton(true, 4);
+    }
+    else
+    {
+        mGameMajor->setPressedButton(false, 4);
+    }
+
+    log += "[verd|" + std::to_string(decision_green[0]) + "]\n";
+    log += "[verm|" + std::to_string(decision_green[1]) + "]\n";
+    log += "[amar|" + std::to_string(decision_green[2]) + "]\n";
+    log += "[azul|" + std::to_string(decision_green[3]) + "]\n";
+    log += "[lara|" + std::to_string(decision_green[4]) + "]\n";
+
+    /*log += "[verm|        ]\n";
     log += "[amar|        ]\n";
     log += "[azul|        ]\n";
-    log += "[lara|        ]";
+    log += "[lara|        ]";*/
     ia_logs[4].setString(log);
 
     log = "---------------------------------------------------\n";
     ia_logs[5].setString(log);
 
-    char percent[10];
-    snprintf(percent, 10, "%.2f", ((float)fitnessRecord) / 10000.0);
-
+   
     log = "";
     ia_logs[8].setString(log);
 
