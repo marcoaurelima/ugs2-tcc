@@ -383,10 +383,10 @@ void UGSScreenGame::draw(sf::RenderWindow &window)
     }
 
     log += "[verd|" + std::to_string(decision_green[0]) + "]\n";
-    log += "[verm|" + std::to_string(decision_green[1]) + "]\n";
-    log += "[amar|" + std::to_string(decision_green[2]) + "]\n";
-    log += "[azul|" + std::to_string(decision_green[3]) + "]\n";
-    log += "[lara|" + std::to_string(decision_green[4]) + "]\n";
+    log += "[verm|" + std::to_string(decision_red[0]) + "]\n";
+    log += "[amar|" + std::to_string(decision_yellow[0]) + "]\n";
+    log += "[azul|" + std::to_string(decision_blue[0]) + "]\n";
+    log += "[lara|" + std::to_string(decision_orange[0]) + "]\n";
 
     /*log += "[verm|        ]\n";
     log += "[amar|        ]\n";
