@@ -29,7 +29,7 @@ UGSRock::UGSRock(int posX, int posY)
 
     this->mText[0].setFillColor(sf::Color::Red);
     this->mText[1].setFillColor(sf::Color::Yellow);
-    this->mText[2].setFillColor(sf::Color(71,0,0));
+    this->mText[2].setFillColor(sf::Color(55,0,0));
     this->mText[3].setFillColor(sf::Color::Red);
     this->mText[4].setFillColor(sf::Color::Blue);
     this->mText[5].setFillColor(sf::Color::White);

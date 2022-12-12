@@ -35,11 +35,11 @@ int main()
 
     Game1playerInfo info;
     info.backgrounCodes = std::vector<int>{2,3};
-    info.bandName = "G-Off";
+    info.bandName = "Audioslave";
     info.dificultyCode = 1;
     info.folderCode = 1;
     info.instrumentCode = 1;
-    info.misicName = "Quando eu acordar";
+    info.misicName = "Like a Stone";
     info.playerName = "Marco";
     info.speed = 6;
     UGSScreenGame gameTst(&info);
